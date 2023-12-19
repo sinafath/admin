@@ -1,6 +1,6 @@
 import cx from 'clsx';
 import { useState } from 'react';
-import { Table, ScrollArea } from '@mantine/core';
+import { Table as MantineTable, ScrollArea } from '@mantine/core';
 import classes from './TableScrollArea.module.css';
 
 const data = [
@@ -156,29 +156,27 @@ const data = [
   },
 ];
 
-export function TableScrollArea() {
+export function Table() {
   const [scrolled, setScrolled] = useState(false);
 
   const rows = data.map((row) => (
-    <Table.Tr key={row.name}>
-      <Table.Td>{row.name}</Table.Td>
-      <Table.Td>{row.email}</Table.Td>
-      <Table.Td>{row.company}</Table.Td>
-    </Table.Tr>
+    <MantineTable.Tr key={row.name}>
+      <MantineTable.Td>{row.name}</MantineTable.Td>
+      <MantineTable.Td>{row.email}</MantineTable.Td>
+      <MantineTable.Td>{row.company}</MantineTable.Td>
+    </MantineTable.Tr>
   ));
 
   return (
-    <ScrollArea h={300} onScrollPositionChange={({ y }) => setScrolled(y !== 0)}>
-      <Table miw={700}>
-        <Table.Thead className={cx(classes.header, { [classes.scrolled]: scrolled })}>
-          <Table.Tr>
-            <Table.Th>Name</Table.Th>
-            <Table.Th>Email</Table.Th>
-            <Table.Th>Company</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>{rows}</Table.Tbody>
-      </Table>
-    </ScrollArea>
+      <MantineTable miw={700}>
+        <MantineTable.Thead className={cx(classes.header, { [classes.scrolled]: scrolled })}>
+          <MantineTable.Tr>
+            <MantineTable.Th>Name</MantineTable.Th>
+            <MantineTable.Th>Email</MantineTable.Th>
+            <MantineTable.Th>Company</MantineTable.Th>
+          </MantineTable.Tr>
+        </MantineTable.Thead>
+        <MantineTable.Tbody>{rows}</MantineTable.Tbody>
+      </MantineTable>
   );
 }
