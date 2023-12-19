@@ -1,7 +1,7 @@
 
 import { StoryWrapper } from '@/libs/storybook/StoryWrapper/StoryWrapper';
 import attributes from './attributes.json';
-import NavbarNested from './Navbar';
+import NavbarNested from './NavbarNested';
 
 export default { title: 'NavbarNested' };
 
