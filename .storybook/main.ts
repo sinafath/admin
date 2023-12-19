@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     'storybook-dark-mode',
     '@storybook/addon-styling-webpack',
+    "storybook-addon-rtl-direction"
   ],
   framework: {
     name: '@storybook/nextjs',
