@@ -1,5 +1,5 @@
 import '@mantine/core/styles.css';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { MantineProvider, ColorSchemeScript, DirectionProvider } from '@mantine/core';
 import { theme } from '../theme';
 
@@ -7,8 +7,12 @@ export const metadata = {
   title: 'Mantine Next.js template',
   description: 'I am using Mantine with Next.js!',
 };
-
-export default function RootLayout({ children }: { children: any }) {
+type RootLayout = {
+  dashboard: ReactNode
+  login:ReactNode
+}
+export default function RootLayout({ login,dashboard }: RootLayout) {
+  const isLoggedIn = false
   return (
     <html lang="fa" dir="rtl">
       <head>
@@ -21,7 +25,7 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <DirectionProvider initialDirection='rtl'>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+          <MantineProvider theme={theme}>{isLoggedIn ?dashboard : login}</MantineProvider>
         </DirectionProvider>
       </body>
     </html>
