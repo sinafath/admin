@@ -1,4 +1,6 @@
 {
+    "title": "Collapsible links group",
+    "category": "navbars",
     "canvas": {
       "center": true,
       "maxWidth": 420
