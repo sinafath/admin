@@ -70,3 +70,4 @@ export function NavbarLinksGroup() {
     </Box>
   );
 }
+export default NavbarLinksGroup

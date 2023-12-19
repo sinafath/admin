@@ -1,6 +1,6 @@
 
 import { StoryWrapper } from '@/libs/storybook/StoryWrapper/StoryWrapper';
-import { NavbarLinksGroup } from './NavbarLinksGroup';
+import  NavbarLinksGroup  from './NavbarLinksGroup';
 import attributes from './attributes.json';
 
 export default { title: 'NavbarLinksGroup' };
