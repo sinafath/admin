@@ -29,6 +29,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "storybook-addon-rtl-direction": "^0.0.19",
     "@babel/core": "^7.23.2",
     "@next/eslint-plugin-next": "^14.0.1",
     "@storybook/addon-essentials": "^7.5.2",
