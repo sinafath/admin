@@ -9,10 +9,10 @@ export const metadata = {
   description: 'I am using Mantine with Next.js!',
 };
 type RootLayout = {
-  dashboard: ReactNode
-  login:ReactNode
+  children: ReactNode
+  login: ReactNode
 }
-export default function RootLayout({ login,dashboard }: RootLayout) {
+export default function RootLayout({ login, children }: RootLayout) {
   const isLoggedIn = getAccessToken()
   return (
     <html lang="fa" dir="rtl">
@@ -26,7 +26,7 @@ export default function RootLayout({ login,dashboard }: RootLayout) {
       </head>
       <body>
         <DirectionProvider initialDirection='rtl'>
-          <MantineProvider theme={theme}>{isLoggedIn ?dashboard : login}</MantineProvider>
+          <MantineProvider theme={theme}>{isLoggedIn ? children : login}</MantineProvider>
         </DirectionProvider>
       </body>
     </html>
