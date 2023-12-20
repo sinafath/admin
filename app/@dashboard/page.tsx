@@ -1,1 +1,1 @@
-export default () => 242 ;
+export default () => "test" ;
