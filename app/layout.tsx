@@ -5,14 +5,14 @@ import { theme } from '../theme';
 import getAccessToken from '@/libs/cookies/cookies';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
-  description: 'I am using Mantine with Next.js!',
+  title: 'Dashboaard',
+  description: 'I am using Next.js!',
 };
-type RootLayout = {
-  children: ReactNode
+type RootLayoutProps = {
+  dashboard: ReactNode
   login: ReactNode
 }
-export default function RootLayout({ login, children }: RootLayout) {
+export default function RootLayout({ login, dashboard }: RootLayoutProps) {
   const isLoggedIn = getAccessToken()
   return (
     <html lang="fa" dir="rtl">
@@ -26,7 +26,7 @@ export default function RootLayout({ login, children }: RootLayout) {
       </head>
       <body>
         <DirectionProvider initialDirection='rtl'>
-          <MantineProvider theme={theme}>{isLoggedIn ? children : login}</MantineProvider>
+          <MantineProvider theme={theme}>{isLoggedIn ? dashboard : login}</MantineProvider>
         </DirectionProvider>
       </body>
     </html>
