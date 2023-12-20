@@ -18,7 +18,7 @@ const FormSchema = z.object({
 
 
 
-export async function login(path: string, currentState: stateLogin, formData: FormData): Promise<stateLogin> {
+export async function login(currentState: stateLogin, formData: FormData): Promise<stateLogin> {
     const formDataExtracted = {
         email: formData.get('email'),
         password: formData.get('password'),
