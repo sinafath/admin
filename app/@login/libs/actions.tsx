@@ -55,5 +55,4 @@ export async function login(path: string, currentState: stateLogin, formData: Fo
     }
     // Revalidate the cache for the invoices page and redirect the user.
     revalidatePath(path)
-    redirect(path);
 }
