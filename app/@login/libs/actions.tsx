@@ -37,7 +37,7 @@ export async function login(path: string, currentState: stateLogin, formData: Fo
 
 
     try {
-        const data = await Customfetch<response>("/api/v1/user/login",{
+        const data = await Customfetch<response>("/api/v1/user/login", {
             body: formDataExtracted,
         })
         console.log({ data })
@@ -54,5 +54,10 @@ export async function login(path: string, currentState: stateLogin, formData: Fo
         };
     }
     // Revalidate the cache for the invoices page and redirect the user.
-    revalidatePath(path)
+    revalidatePath("./")
+
+    return {
+        message: "عملیات باموفقیت انجام شد",
+        status: "success"
+    };
 }
