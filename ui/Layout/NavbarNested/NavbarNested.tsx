@@ -1,4 +1,4 @@
-import { Group, Code, ScrollArea, rem } from '@mantine/core';
+import { Group, Code, ScrollArea, rem, AppShell } from '@mantine/core';
 import {
   IconNotes,
   IconCalendarStats,
@@ -7,10 +7,12 @@ import {
   IconFileAnalytics,
   IconAdjustments,
   IconLock,
+  IconLogout,
 } from '@tabler/icons-react';
 import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
 import  Logo  from './Logo';
 import classes from './NavbarNested.module.css';
+import { IconSwitchHorizontal } from '@tabler/icons-react';
 
 const mockdata = [
   { label: 'Dashboard', icon: IconGauge },
@@ -52,7 +54,7 @@ const mockdata = [
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
   return (
-    <nav className={classes.navbar}>
+    <AppShell.Navbar className={classes.navbar}>
       <div className={classes.header}>
         <Group justify="space-between">
           <Logo style={{ width: rem(120) }} />
@@ -63,9 +65,14 @@ const mockdata = [
       <ScrollArea className={classes.links}>
         <div className={classes.linksInner}>{links}</div>
       </ScrollArea>
-
+      <div className={classes.footer}>
+        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+          <IconLogout className={classes.linkIcon} stroke={1.5} />
+          <span>خروج</span>
+        </a>
+      </div>
  
-    </nav>
+    </AppShell.Navbar>
   );
 }
 export default NavbarNested
