@@ -11,7 +11,6 @@ import {
 } from '@mantine/core';
 import classes from './Login.module.css';
 import { login } from './libs/actions';
-import { usePathname } from 'next/navigation';
 import { useFormState, useFormStatus } from 'react-dom';
 
 function SubmitButton() {
@@ -26,9 +25,7 @@ function SubmitButton() {
 
 
 function AuthenticationImage() {
-    const pathname = usePathname()
-    const loginWithPath = login.bind(null, pathname)
-    const [state, dispatch] = useFormState(loginWithPath, null)
+    const [state, dispatch] = useFormState(login, null)
     return (
         <div className={classes.wrapper}>
             <Paper className={classes.form} radius={0} p={30}>
