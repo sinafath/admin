@@ -1,3 +1,5 @@
+import './global.css';
+
 import '@mantine/core/styles.css';
 import React, { ReactNode } from 'react';
 import { MantineProvider, ColorSchemeScript, DirectionProvider } from '@mantine/core';
@@ -12,6 +14,7 @@ type RootLayoutProps = {
   dashboard: ReactNode
   login: ReactNode
 }
+
 export default function RootLayout({ login, dashboard }: RootLayoutProps) {
   const isLoggedIn = getAccessToken()
   return (
