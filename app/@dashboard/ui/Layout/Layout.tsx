@@ -8,9 +8,9 @@ type LayoutProps = {
 }
 function Layout({ children }: LayoutProps) {
     return (
-        <AppShell navbar={{ width: 200, breakpoint: 300 }}>
+        <AppShell navbar={{ width: 300, breakpoint: 300 }}>
             <NavbarNested />
-            <AppShell.Main>{children}</AppShell.Main>
+            <AppShell.Main m={70}>{children}</AppShell.Main>
         </AppShell>
     );
 }

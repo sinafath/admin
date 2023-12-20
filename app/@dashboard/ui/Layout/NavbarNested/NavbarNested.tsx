@@ -10,47 +10,28 @@ import {
   IconLogout,
 } from '@tabler/icons-react';
 import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
-import  Logo  from './Logo';
+import Logo from './Logo';
 import classes from './NavbarNested.module.css';
 import { IconSwitchHorizontal } from '@tabler/icons-react';
+import Footer from '../Footer/Footer';
 
 const mockdata = [
-  { label: 'Dashboard', icon: IconGauge },
+  
+  { label: 'محصول', icon: IconAdjustments },
   {
-    label: 'Market news',
+    label: 'کاربر',
     icon: IconNotes,
     initiallyOpened: true,
     links: [
-      { label: 'Overview', link: '/' },
-      { label: 'Forecasts', link: '/' },
-      { label: 'Outlook', link: '/' },
-      { label: 'Real time', link: '/' },
+      { label: 'نقش ها', link: '/' },
+      { label: 'کاربران', link: '/' },
+      { label: 'مجوز ها', link: '/' }
     ],
-  },
-  {
-    label: 'Releases',
-    icon: IconCalendarStats,
-    links: [
-      { label: 'Upcoming releases', link: '/' },
-      { label: 'Previous releases', link: '/' },
-      { label: 'Releases schedule', link: '/' },
-    ],
-  },
-  { label: 'Analytics', icon: IconPresentationAnalytics },
-  { label: 'Contracts', icon: IconFileAnalytics },
-  { label: 'Settings', icon: IconAdjustments },
-  {
-    label: 'Security',
-    icon: IconLock,
-    links: [
-      { label: 'Enable 2FA', link: '/' },
-      { label: 'Change password', link: '/' },
-      { label: 'Recovery codes', link: '/' },
-    ],
-  },
+  }
+
 ];
 
- function NavbarNested() {
+function NavbarNested() {
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
   return (
@@ -65,13 +46,7 @@ const mockdata = [
       <ScrollArea className={classes.links}>
         <div className={classes.linksInner}>{links}</div>
       </ScrollArea>
-      <div className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>خروج</span>
-        </a>
-      </div>
- 
+      <Footer />
     </AppShell.Navbar>
   );
 }
