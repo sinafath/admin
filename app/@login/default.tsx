@@ -10,16 +10,25 @@ import {
     Anchor,
 } from '@mantine/core';
 import classes from './Login.module.css';
-import { login, stateLogin } from './libs/actions';
+import { login } from './libs/actions';
 import { usePathname } from 'next/navigation';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
+
+function SubmitButton() {
+    const { pending } = useFormStatus()
+
+    return (
+        <Button fullWidth mt="xl" size="md" type='submit' loading={pending}>
+            ورود
+        </Button>
+    )
+}
+
 
 function AuthenticationImage() {
-
     const pathname = usePathname()
     const loginWithPath = login.bind(null, pathname)
     const [state, dispatch] = useFormState(loginWithPath, null)
-    console.log({state})
     return (
         <div className={classes.wrapper}>
             <Paper className={classes.form} radius={0} p={30}>
@@ -28,10 +37,8 @@ function AuthenticationImage() {
                 </Title>
                 <form action={dispatch}>
                     <TextInput name='email' label="ایمیل" error={state?.errors?.email} placeholder="hello@gmail.com" size="md" />
-                    <PasswordInput name='password' label="رمز عبور"  error={state?.errors?.password}  placeholder="رمز عبور" mt="md" size="md" />
-                    <Button fullWidth mt="xl" size="md" type='submit'>
-                        ورود
-                    </Button>
+                    <PasswordInput name='password' label="رمز عبور" error={state?.errors?.password} placeholder="رمز عبور" mt="md" size="md" />
+                   <SubmitButton/>
                 </form >
             </Paper>
         </div>
