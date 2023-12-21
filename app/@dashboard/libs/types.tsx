@@ -4,4 +4,7 @@ type stateLogout = {
     message: string;
     status: string
 } | null
-export type {stateLogout}
+type postProductsValue = {
+
+}
+export type { stateLogout, postProductsValue }

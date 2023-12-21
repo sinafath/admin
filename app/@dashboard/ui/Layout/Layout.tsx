@@ -1,6 +1,6 @@
 "use client"
 import { AppShell, Burger, Group, Skeleton } from '@mantine/core';
-import NavbarNested from './NavbarNested/NavbarNested';
+import NavbarNested from '../NavbarNested/NavbarNested';
 import { ReactNode } from 'react';
 import { IconDog } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';

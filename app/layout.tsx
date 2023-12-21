@@ -4,8 +4,8 @@ import '@mantine/core/styles.css';
 import React, { ReactNode } from 'react';
 import { MantineProvider, ColorSchemeScript, DirectionProvider } from '@mantine/core';
 import { theme } from '../theme';
-import getAccessToken from '@/libs/cookies/cookies';
-import YekanBakhFaNumReg from './libs/font/font';
+import getAccessToken from '@/libs/http/cookies/cookies';
+import YekanBakhFaNumReg from '../libs/assets/font/font';
 
 export const metadata = {
   title: 'Dashboaard',

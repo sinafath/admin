@@ -1,8 +1,2 @@
 
-export default function HomePage() {
-  return (
-    <>
-    Home
-    </>
-  );
-}
+export default ()=> null
