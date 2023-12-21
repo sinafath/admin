@@ -1,12 +1,4 @@
-type error = {
-    errors: {
-        message: string,
-        error: string,
-        statusCode: number
-    },
-    timestamp: number
-}
-type response = {
+type responseLogin = {
     timestamp: string,
     status: string,
     data: {
@@ -23,9 +15,7 @@ type stateLogin = {
         email?: string[] | undefined;
         password?: string[] | undefined;
     };
-
-    error?: error;
     message: string;
-    status: string
+    status: "error" | "success"
 } | null
-export type {stateLogin,response,error}
+export type {stateLogin,responseLogin}
