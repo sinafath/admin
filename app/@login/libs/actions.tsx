@@ -54,7 +54,7 @@ export async function login(currentState: stateLogin, formData: FormData): Promi
         };
     }
     // Revalidate the cache for the invoices page and redirect the user.
-    revalidatePath("./")
+    revalidatePath("/")
 
     return {
         message: "عملیات باموفقیت انجام شد",

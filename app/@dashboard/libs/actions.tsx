@@ -10,8 +10,7 @@ export async function logout(currentState: stateLogout): Promise<stateLogout> {
     console.log(cookies().getAll())
     deleteAccessToken()
 
-    revalidatePath('./')
-    redirect("./")
+    revalidatePath('/',"layout")
     return {
         message: "عملیات باموفقیت انجام شد",
         status: "success"
