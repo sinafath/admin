@@ -46,7 +46,7 @@ const data = [
         "name": "Mylene Ebert",
         "company": "Kirlin and Sons",
         "email": "Hildegard17@hotmail.com"
-    },
+    }
 ]
 function DashBoard() {
     return (
@@ -54,8 +54,8 @@ function DashBoard() {
             <Flex mb={20}>
                 <Button leftSection={<IconPlus size={14} />}>  محصول جدید</Button>
             </Flex>
-
-            <Table data={data} cols={["اسم", "شر", "ایمی"]}></Table></>
+            <Table data={data} cols={["اسم", "شر", "ایمی"]}></Table>
+        </>
     )
 }
 export default DashBoard
