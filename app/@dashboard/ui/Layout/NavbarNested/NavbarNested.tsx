@@ -36,13 +36,6 @@ function NavbarNested() {
 
   return (
     <AppShell.Navbar className={classes.navbar}>
-      <div className={classes.header}>
-        <Group justify="space-between">
-          <Logo style={{ width: rem(120) }} />
-          <Code fw={700}>v3.1.2</Code>
-        </Group>
-      </div>
-
       <ScrollArea className={classes.links}>
         <div className={classes.linksInner}>{links}</div>
       </ScrollArea>
