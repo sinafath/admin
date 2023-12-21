@@ -2,7 +2,7 @@ import { IconLogout } from '@tabler/icons-react';
 import classes from './Footer.module.css';
 import { useFormState, useFormStatus } from 'react-dom';
 import { IconLoader } from '@tabler/icons-react';
-import { logout } from '@/app/@dashboard/(products)/libs/actions';
+import { logout } from '@/app/@dashboard/(products)/_libs/actions';
 
 function LogoutButton() {
     const { pending } = useFormStatus()
