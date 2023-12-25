@@ -1,8 +1,8 @@
 import getAccessToken from "../cookies/cookies"
 
-async function Customfetch<data = {}>(input: URL | RequestInfo, init?: Omit<RequestInit, "body"> & {
-    body: any
-} | undefined) {
+async function authenticatedFetch<data = {}>(input: URL | RequestInfo, init?: Omit<RequestInit, "body"> & {
+     body?: any
+} | undefined): Promise<data> {
      const { body, ...customConfig } = init || {}
      const token = getAccessToken()
      const customHeaders = "headers" in customConfig ? customConfig.headers : {}
@@ -31,4 +31,4 @@ async function Customfetch<data = {}>(input: URL | RequestInfo, init?: Omit<Requ
                }
           })
 }
-export default Customfetch
+export default authenticatedFetch

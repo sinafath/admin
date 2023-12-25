@@ -15,14 +15,12 @@ import { useFormState, useFormStatus } from 'react-dom';
 
 function SubmitButton() {
     const { pending } = useFormStatus()
-
     return (
         <Button fullWidth mt="xl" size="md" type='submit' loading={pending}>
             ورود
         </Button>
     )
 }
-
 
 function AuthenticationImage() {
     const [state, dispatch] = useFormState(login, null)

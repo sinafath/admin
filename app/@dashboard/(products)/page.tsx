@@ -1,6 +1,6 @@
 import { Button, Flex } from "@mantine/core";
-import { Table } from "./ui/Table/Table";
 import { IconPlus } from "@tabler/icons-react";
+import { Table } from "./_ui/Table";
 const data = [
     {
         "name": "Athena Weissnat",

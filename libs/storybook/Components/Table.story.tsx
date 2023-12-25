@@ -1,7 +1,7 @@
 
 import { StoryWrapper } from '@/libs/storybook/StoryWrapper/StoryWrapper';
-import { Table } from './Table';
-import attributes from './attributes.json';
+import { Table } from '../../../app/@dashboard/(products)/_ui/Table';
+import attributes from '../../../app/@dashboard/(products)/Table/attributes.json';
 
 export default { title: 'Table' };
 

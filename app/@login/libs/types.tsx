@@ -10,12 +10,19 @@ type responseLogin = {
     },
     statusCode: 201
 }
+type errorResult = {
+    errors: {
+        message: string,
+        error: string,
+        statusCode: 401 | 403 | 200
+    },
+}
 type stateLogin = {
     errors?: {
         email?: string[] | undefined;
         password?: string[] | undefined;
     };
     message: string;
-    status: "error" | "success"
+    statusCode: 403 | 500 | 200 | 401
 } | null
-export type {stateLogin,responseLogin}
+export type {stateLogin,responseLogin,errorResult}
