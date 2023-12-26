@@ -1,8 +1,9 @@
-import getAccessToken from "../cookies/cookies"
-
-async function authenticatedFetch<data = {}>(input: URL | RequestInfo, init?: Omit<RequestInit, "body"> & {
+import getAccessToken from "../cookies/accessToken"
+type init = Omit<RequestInit, "body"> & {
      body?: any
-} | undefined): Promise<data> {
+} | undefined
+type input = URL | RequestInfo
+async function authenticatedFetch<data = {}>(input: input, init?: init): Promise<data> {
      const { body, ...customConfig } = init || {}
      const token = getAccessToken()
      const customHeaders = "headers" in customConfig ? customConfig.headers : {}
@@ -23,12 +24,14 @@ async function authenticatedFetch<data = {}>(input: URL | RequestInfo, init?: Om
      }
      return fetch(`${process.env.API_URL}${input}`, config)
           .then(async response => {
+               const data = await response.json()
                if (response.ok) {
-                    return await response.json()
+                    return data
                } else {
-                    const errorMessage = await response.text()
-                    return Promise.reject(new Error(errorMessage))
+                    return Promise.reject(data)
                }
           })
 }
+const authenticatedDelete = (input: input, init?: init) => authenticatedFetch(input, { method: "DELETE" });
+export { authenticatedDelete }
 export default authenticatedFetch
