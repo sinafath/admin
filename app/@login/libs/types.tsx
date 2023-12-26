@@ -22,7 +22,7 @@ type stateLogin = {
         email?: string[] | undefined;
         password?: string[] | undefined;
     };
-    message: string;
-    statusCode: 403 | 500 | 200 | 401
-} | null
+    message?: string;
+    statusCode?: 403 | 500 | 200 | 401
+} | null | undefined
 export type {stateLogin,responseLogin,errorResult}
