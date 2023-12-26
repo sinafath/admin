@@ -1,7 +1,7 @@
 import serializeFormData from "@/libs/utils/serializeFormData/serializeFormData";
 import { z } from "zod";
 
-const FormSchema = z.object({
+const LoginFormSchema = z.object({
     email: z
         .string()
         .min(1, { message: "ایمیل را وارد کنید" })
@@ -10,5 +10,6 @@ const FormSchema = z.object({
 });
 
 export default function validateLoginData(data: FormData) {
-    return FormSchema.safeParse(serializeFormData(data))
+    return LoginFormSchema.safeParse(serializeFormData(data))
 };
+export {LoginFormSchema}
