@@ -9,7 +9,7 @@ import { theme } from '../theme';
 import getAccessToken from '@/libs/http/cookies/accessToken';
 import YekanBakhFaNumReg from '../libs/assets/font/font';
 import getNotification from '@/libs/http/cookies/notification';
-import Notification from './_ui.tsx/Notification';
+import Notification from './_components/Notification/Notification';
 import { Notifications } from '@mantine/notifications';
 
 export const metadata = {
@@ -24,7 +24,6 @@ type RootLayoutProps = {
 export default function RootLayout({ login, dashboard }: RootLayoutProps) {
   const isLoggedIn = getAccessToken()
   const notification = getNotification()
-  console.log(notification)
   return (
     <html lang="fa" dir="rtl" >
       <head>
@@ -38,7 +37,6 @@ export default function RootLayout({ login, dashboard }: RootLayoutProps) {
       <body className={YekanBakhFaNumReg.className}>
         <DirectionProvider initialDirection='rtl'>
           <MantineProvider theme={theme}>
-          <Notifications />
             <Notification message={notification?.value} />
             {isLoggedIn?.value && isLoggedIn.value !== "" ? dashboard : login}</MantineProvider>
         </DirectionProvider>

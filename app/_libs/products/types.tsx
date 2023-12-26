@@ -1,9 +1,4 @@
 
-type stateLogout = {
-
-    message: string;
-    status: string
-} | null
 type postProductsValue = {
 
 }
@@ -22,4 +17,4 @@ type GetProductByIdResult = {
     }
 }
 
-export type { stateLogout, postProductsValue ,GetProductByIdResult}
+export type {  postProductsValue ,GetProductByIdResult}
