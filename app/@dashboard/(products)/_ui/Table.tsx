@@ -1,4 +1,5 @@
 "use client"
+
 import cx from 'clsx';
 import { useState } from 'react';
 import { Table as MantineTable, ScrollArea } from '@mantine/core';
@@ -17,7 +18,7 @@ export function Table<col extends string>({ data, cols }: TableProps<col>) {
   const rows = data.map((row, index) => (
     <MantineTable.Tr key={index}>
       {Object.entries(row).map(([item, value]) => (
-        <MantineTable.Td>{value as any}</MantineTable.Td>
+        <MantineTable.Td key={item}>{value as any}</MantineTable.Td>
       ))}
     </MantineTable.Tr>
   ));
