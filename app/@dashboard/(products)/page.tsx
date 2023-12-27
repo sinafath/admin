@@ -1,6 +1,5 @@
-import { Button, Flex } from "@mantine/core";
-import { IconPlus } from "@tabler/icons-react";
-import { Table } from "./_ui/Table";
+import Button from "@/app/_components/Table/Button";
+import { Table } from "@/app/_components/Table/Table";
 const data = [
     {
         "name": "Athena Weissnat",
@@ -51,9 +50,7 @@ const data = [
 function DashBoard() {
     return (
         <>
-            <Flex mb={20}>
-                <Button leftSection={<IconPlus size={14} />}>  محصول جدید</Button>
-            </Flex>
+            <Button></Button>
             <Table data={data} cols={["اسم", "شر", "ایمی"]}></Table>
         </>
     )
