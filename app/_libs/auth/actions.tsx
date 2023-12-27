@@ -25,8 +25,6 @@ export async function login(currentState: stateLogin, formData: FormData): Promi
     if (!validatedFields.success) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
-            message: 'اطلاعات اشتباه وارد شده است',
-            statusCode: 401
         };
     }
     try {
