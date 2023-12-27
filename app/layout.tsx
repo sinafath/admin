@@ -8,9 +8,7 @@ import { MantineProvider, ColorSchemeScript, DirectionProvider } from '@mantine/
 import { theme } from '../theme';
 import getAccessToken from '@/libs/http/cookies/accessToken';
 import YekanBakhFaNumReg from '../libs/assets/font/font';
-import getNotification from '@/libs/http/cookies/notification';
-import Notification from './_components/Notification/Notification';
-import { Notifications } from '@mantine/notifications';
+import ServerNotification from './_components/Notification/ServerNotification';
 
 export const metadata = {
   title: 'Dashboaard',
@@ -23,7 +21,6 @@ type RootLayoutProps = {
 
 export default function RootLayout({ login, dashboard }: RootLayoutProps) {
   const isLoggedIn = getAccessToken()
-  const notification = getNotification()
   return (
     <html lang="fa" dir="rtl" >
       <head>
@@ -37,7 +34,7 @@ export default function RootLayout({ login, dashboard }: RootLayoutProps) {
       <body className={YekanBakhFaNumReg.className}>
         <DirectionProvider initialDirection='rtl'>
           <MantineProvider theme={theme}>
-            <Notification message={notification?.value} />
+            <ServerNotification />
             {isLoggedIn?.value && isLoggedIn.value !== "" ? dashboard : login}</MantineProvider>
         </DirectionProvider>
       </body>
