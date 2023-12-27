@@ -5,7 +5,11 @@ const getNotification = () => cookies().get('notification')
 const deleteNotification = () => cookies().delete('notification')
 const setNotification = (notification: string) => cookies().set('notification', notification, {
     sameSite: 'strict',
+    httpOnly: true,
+    secure: process.env.NODE_ENV !== 'development',
     path: '/',
+    maxAge: 5,
+
 })
 
 export { deleteNotification, setNotification }

@@ -8,11 +8,12 @@ import { setAccessToken } from '@/libs/http/cookies/accessToken';
 import serializeFormData from '@/libs/utils/serializeFormData/serializeFormData';
 import { setNotification } from '@/libs/http/cookies/notification';
 
-import { deleteAccessToken } from '@/libs/http/cookies/accessToken';;
+import { deleteAccessToken } from '@/libs/http/cookies/accessToken';import errorHandler from '@/libs/http/errorHandler/errorHandler';
+;
 
 export async function logout(currentState: stateLogout): Promise<stateLogout> {
     deleteAccessToken()
-    revalidatePath('/',"layout")
+    revalidatePath('/', "layout")
     return {
         message: "عملیات باموفقیت انجام شد",
         status: "success"
@@ -21,28 +22,17 @@ export async function logout(currentState: stateLogout): Promise<stateLogout> {
 
 export async function login(currentState: stateLogin, formData: FormData): Promise<stateLogin> {
     const validatedFields = validateLoginData(formData);
-    
     if (!validatedFields.success) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
         };
     }
     try {
-        const data = await userLogin(serializeFormData(formData) as typeof LoginFormSchema._output)
+        const data = await userLogin(serializeFormData(formData) as typeof LoginFormSchema._output, 
+        { notification: "کاربر با موفقیت وارد شد" })
         setAccessToken(data.data.access_token)
-        setNotification("کاربر با موفقیت وارد شد")
     } catch (error) {
-        const errorResult = error as errorResult
-        if (errorResult.errors?.statusCode === 403) {
-            return {
-                message: 'رمز یا ایمیل اشتباه است',
-                statusCode: 401
-            };
-        }
-        return {
-            message: 'خطا در سرور',
-            statusCode: 500
-        };
+        return errorHandler(error)
     }
     revalidatePath("/")
 }

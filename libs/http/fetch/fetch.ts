@@ -1,10 +1,18 @@
 import getAccessToken from "../cookies/accessToken"
+import { setNotification } from "../cookies/notification"
 type init = Omit<RequestInit, "body"> & {
      body?: any
+     notification?:boolean | string
 } | undefined
 type input = URL | RequestInfo
 async function authenticatedFetch<data = {}>(input: input, init?: init): Promise<data> {
-     const { body, ...customConfig } = init || {}
+     const { body,notification, ...customConfig } = init || {}
+     function notificationHandler(){
+          if(notification === false) return
+          if(typeof notification === "string") return setNotification(notification)
+          setNotification("عملیات باموفقیت انجام شد")
+
+     }
      const token = getAccessToken()
      const customHeaders = "headers" in customConfig ? customConfig.headers : {}
      const headers: RequestInit["headers"] = { 'content-type': 'application/json' }
@@ -26,6 +34,7 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
           .then(async response => {
                const data = await response.json()
                if (response.ok) {
+                    notificationHandler()
                     return data
                } else {
                     return Promise.reject(data)
@@ -33,5 +42,6 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
           })
 }
 const authenticatedDelete = (input: input, init?: init) => authenticatedFetch(input, { method: "DELETE" });
-export { authenticatedDelete }
+export { authenticatedDelete, }
+export type {init}
 export default authenticatedFetch
