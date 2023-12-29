@@ -2,14 +2,14 @@ import getAccessToken from "../cookies/accessToken"
 import { setNotification } from "../cookies/notification"
 type init = Omit<RequestInit, "body"> & {
      body?: any
-     notification?:boolean | string
+     notification?: boolean | string
 } | undefined
 type input = URL | RequestInfo
 async function authenticatedFetch<data = {}>(input: input, init?: init): Promise<data> {
-     const { body,notification, ...customConfig } = init || {}
-     function notificationHandler(){
-          if(notification === false) return
-          if(typeof notification === "string") return setNotification(notification)
+     const { body, notification, ...customConfig } = init || {}
+     function notificationHandler() {
+          if (notification === false) return
+          if (typeof notification === "string") return setNotification(notification)
           setNotification("عملیات باموفقیت انجام شد")
 
      }
@@ -17,7 +17,7 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
      const customHeaders = "headers" in customConfig ? customConfig.headers : {}
      const headers: RequestInit["headers"] = { 'content-type': 'application/json' }
      if (token) {
-          headers.Authorization = `Bearer ${token}`
+          headers.Authorization = `Bearer ${token.value}`
      }
      const config: RequestInit = {
           method: body ? 'POST' : 'GET',
@@ -30,11 +30,13 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
      if (body) {
           config.body = JSON.stringify(body)
      }
-     return fetch(`${process.env.API_URL}${input}`, config)
+     return fetch(`${process.env.API_URL}${input}`, {
+          cache:"no-store",
+          ...config})
           .then(async response => {
                const data = await response.json()
                if (response.ok) {
-                    notificationHandler()
+                    (config.method === "POST" || config.method === "DELETE" || config.method === "PATCH" || notification) && notificationHandler()
                     return data
                } else {
                     return Promise.reject(data)
@@ -42,6 +44,8 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
           })
 }
 const authenticatedDelete = (input: input, init?: init) => authenticatedFetch(input, { method: "DELETE" });
-export { authenticatedDelete, }
-export type {init}
+const authenticatedEdit = (input: input, init?: init) => authenticatedFetch(input, { method: "PATCH" });
+
+export { authenticatedDelete,authenticatedEdit }
+export type { init }
 export default authenticatedFetch

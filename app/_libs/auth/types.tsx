@@ -11,11 +11,7 @@ type responseLogin = {
     statusCode: 201
 }
 
-type stateLogout = {
-
-    message: string;
-    status: string
-} | null
+type stateNull = undefined | null
 type errorResult = {
     errors: {
         message: string,
@@ -30,5 +26,5 @@ type stateLogin = {
     };
     message?: string;
     statusCode?: 403 | 500 | 200 | 401
-} | null | undefined
-export type {stateLogin,responseLogin,errorResult,stateLogout}
+} | null | void 
+export type {stateLogin,responseLogin,errorResult,stateNull}

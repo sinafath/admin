@@ -2,7 +2,7 @@
 import { AppShell, Burger, Group, Skeleton } from '@mantine/core';
 import NavbarNested from './NavbarNested/NavbarNested';
 import { ReactNode } from 'react';
-import { IconDog } from '@tabler/icons-react';
+import { IconBrandMantine, IconDog } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 
 type LayoutProps = {
@@ -18,7 +18,7 @@ function Layout({ children }: LayoutProps) {
             <AppShell.Header>
                 <Group h="100%" px="md">
                     <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                    <IconDog size={30} />
+                    <IconBrandMantine  size={30} />
                 </Group>
             </AppShell.Header>
             <NavbarNested />

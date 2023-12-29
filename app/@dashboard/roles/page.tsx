@@ -2,6 +2,7 @@ import Delete from "@/app/_components/Actions/Delete";
 import Edit from "@/app/_components/Actions/Edit";
 import { Table, Thead } from "@/app/_components/Table/Table";
 import { getProductsPerPage } from "@/app/_libs/products/data";
+import { getRolesPerPage } from "@/app/_libs/roles/data";
 import appendParams from "@/libs/http/searchParams/appendParams";
 import { Box, Flex, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
 
@@ -11,10 +12,11 @@ type TableProps<col extends string> = {
     }[]
     cols: string[]
 }
+export const revalidate = 0
 
 async function Dashboard() {
-    const cols = ["اسم", "مدت ", "عملیات ها"]
-    const products = await getProductsPerPage()
+    const cols = ["اسم", "وصل شده", "عملیات ها"]
+    const roles = await getRolesPerPage()
     return (
         <Table >
             <Thead >
@@ -24,14 +26,14 @@ async function Dashboard() {
                     ))}
                 </TableTr>
             </Thead>
-            <TableTbody>{products?.data.map(({name,id,durationTime}, index) => (
+            <TableTbody>{roles.data.map(({assignee,name,id}, index) => (
                 <TableTr key={index}>
                     <TableTd >{name}</TableTd>
-                    <TableTd >{durationTime}</TableTd>
+                    <TableTd >{assignee?.username}</TableTd>
                     <TableTd >
                         <Flex gap={5}> 
-                        <Delete href={appendParams(`/delete`,{id})}/>
-                        <Edit  href={appendParams(`/edit`,{id})}/>
+                        <Delete href={appendParams(`roels/delete`,{id})}/>
+                        <Edit  href={appendParams(`/roles/edit`,{id})}/>
                         </Flex>
                     </TableTd>
                 </TableTr>

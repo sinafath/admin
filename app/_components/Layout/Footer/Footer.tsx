@@ -1,8 +1,9 @@
+"use client"
 import { IconLogout } from '@tabler/icons-react';
 import classes from './Footer.module.css';
 import { useFormState, useFormStatus } from 'react-dom';
 import { IconLoader } from '@tabler/icons-react';
-import { logout } from '@/app/_libs/products/actions';
+import { logout } from '@/app/_libs/auth/actions';
 
 function LogoutButton() {
     const { pending } = useFormStatus()

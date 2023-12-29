@@ -1,4 +1,5 @@
 
+
 function appendParams(url: string, params: {
     [key in string]: number | string
 }) {

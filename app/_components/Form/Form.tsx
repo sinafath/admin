@@ -1,7 +1,11 @@
-import { TextInput } from '@mantine/core';
+"use client"
+
+import objectToFormData from '@/libs/converts/objectToFormData/objectToFormData';
+import { Box, BoxProps, Text, TextInput } from '@mantine/core';
 import { createFormContext } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
-import { PropsWithChildren, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { PropsWithChildren, useEffect, useTransition } from 'react';
 import { useFormState } from 'react-dom';
 
 type state = {
@@ -13,31 +17,38 @@ type action = Promise<state>
 type FormProps = PropsWithChildren<{
     initialValues?: {}
     action: any
-}>
+    variables?:{}
+    redirect?:string
+}> & BoxProps
 const [FormProvider, useFormContext, useForm] =
     createFormContext<{}>();
-function Form({ initialValues, children, action }: FormProps) {
+function Form({ initialValues, children, action,variables,redirect,...props }: FormProps) {
     const [state, dispatch] = useFormState<action>(action as (state: state) => action | Promise<action>, null)
     const { errors, message, statusCode } = state || {}
+    const [, startTransition] = useTransition();
+
+    const {push,refresh} = useRouter()
+    console.log({initialValues})
     const withInitialValue = initialValues ? {
         initialValues
     } : {}
     const form = useForm(withInitialValue)
     useEffect(() => {
         errors && form.setErrors(errors)
-        message && form.setFieldError("message", message)
         statusCode === 500 && message && notifications.show({
             autoClose: 4000,
             title: 500,
             message,
         })
-        return form.clearErrors()
     }, [errors, message])
     return (
         <FormProvider form={form}>
-            <form action={dispatch}>
+            <Box component='form' {...props} action={action} >
                 {children}
-            </form>
+            </Box>
+            <Text c="red" pt={10}>
+                {message}
+            </Text >
         </FormProvider>
     );
 }

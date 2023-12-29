@@ -17,13 +17,13 @@ import Footer from '../Footer/Footer';
 
 const mockdata = [
   
-  { label: 'محصول', icon: IconAdjustments },
+  { label: 'محصول', icon: IconAdjustments, link: '/' },
   {
     label: 'کاربر',
     icon: IconNotes,
     initiallyOpened: true,
     links: [
-      { label: 'نقش ها', link: '/' },
+      { label: 'نقش ها', link: '/roles' },
       { label: 'کاربران', link: '/' },
       { label: 'مجوز ها', link: '/' }
     ],

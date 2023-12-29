@@ -22,4 +22,5 @@ function errorHandler(errorResult: any, messages?: message): errorHandlerReturne
         statusCode: 500
     };
 }
+export type {errorHandlerReturnedValue}
 export default errorHandler

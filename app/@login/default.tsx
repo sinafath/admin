@@ -1,7 +1,6 @@
 "use client"
 import {
     Paper,
-    TextInput,
     Title,
 } from '@mantine/core';
 import classes from './Login.module.css';
@@ -9,6 +8,7 @@ import { login } from '../_libs/auth/actions';
 import Button from '../_components/Form/Submit';
 import PasswordInput from '../_components/Form/PasswordInput';
 import { Form } from '../_components/Form/Form';
+import TextInput from '../_components/Form/TextInput';
 
 
 
@@ -20,8 +20,8 @@ function AuthenticationImage() {
                     به پنل ادمین خوش آمدید
                 </Title>
                 <Form action={login}>
-                    <TextInput label="ایمیل" placeholder="hello@gmail.com" size="md" />
-                    <PasswordInput />
+                    <TextInput name='email' label="ایمیل" placeholder="hello@gmail.com" />
+                    <PasswordInput name='password' />
                     <Button>
                         ورود
                     </Button>

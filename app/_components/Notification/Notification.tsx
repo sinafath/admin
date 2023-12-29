@@ -8,11 +8,12 @@ type NotificationProps = {
 function Notification({ message }: NotificationProps) {
     useEffect(() => {
         message && notifications.show({
-            autoClose: 4000,
-            title: message,
+            autoClose: 3000,
+            title: "موفق",
             message,
+            withCloseButton:true
         })
-    })
+    },[message])
     return <Notifications />
 
 }

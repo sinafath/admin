@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const LoginSchema = z.object({
+const EditProductSchema = z.object({
     email: z
         .string()
         .min(1, { message: "ایمیل را وارد کنید" })
@@ -8,7 +8,7 @@ const LoginSchema = z.object({
     password: z.string().min(1, { message: "رمز را وارد کنید" }),
 });
 
-type LoginSchemaType = z.infer<typeof LoginSchema>;
+type LoginSchemaType = z.infer<typeof EditProductSchema>;
 
 export type {LoginSchemaType}
-export {LoginSchema}
+export {EditProductSchema}
