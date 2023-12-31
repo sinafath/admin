@@ -2,18 +2,13 @@
 import { useEffect, useState } from 'react';
 import { Combobox, InputBase, useCombobox } from '@mantine/core';
 import { useFormContext } from '../Form';
+import { userType } from '@/app/_libs/users/types';
+
 
 
 type UserComboBoxProps  = {
-    data: {
-        id: number,
-        email: string,
-        password: string,
-        username: string,
-        deleted: null
-    }[]
+    data: userType[]
 }
-
 export function UserComboBox({data}:UserComboBoxProps) {
     const findById = (id: number) => data.find((item) => item.id === id);
     const combobox = useCombobox({

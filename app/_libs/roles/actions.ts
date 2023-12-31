@@ -3,10 +3,8 @@
 import { addRole, deleteRoleById, editRoleById } from "./fetch"
 import { EditRoleSchema ,AddRoleSchema} from "./schema"
 import action from "@/libs/utils/safeAction/safeAction"
-import { deletePropsActionProps } from "./types"
 import revalidateAll from "@/libs/utils/revalidateAll/revalidateAll"
-import { redirect } from "next/navigation"
-import { deleteUserById } from "../users/fetch"
+import HasIDSchema from "@/libs/schema/HasIDSchema"
 
 
 export const EditRoleAction = action(EditRoleSchema, async function (props) {
@@ -21,9 +19,9 @@ export const addRoleAction = action(AddRoleSchema, async function (props) {
 }
 )
 
-export const DeleteRoleAction = async function (props: deletePropsActionProps) {
+export const DeleteRoleAction = action(HasIDSchema,async function (props) {
     revalidateAll()
     const data = await deleteRoleById(props)
     return data
-}
+})
 

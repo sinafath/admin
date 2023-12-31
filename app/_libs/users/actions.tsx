@@ -3,8 +3,7 @@
 import { addUser, deleteUserById, editUserById } from "./fetch"
 import { EditUserSchema ,AddUserSchema} from "./schema"
 import action from "@/libs/utils/safeAction/safeAction"
-import { deletePropsActionProps } from "./types"
-import revalidateAll from "@/libs/utils/revalidateAll/revalidateAll"
+import { deleteActionProps } from "./types"
 import HasIDSchema from "@/libs/schema/HasIDSchema"
 
 
@@ -20,7 +19,7 @@ export const addUserAction = action(AddUserSchema, async function (props) {
 }
 )
 
-export const DeleteUserAction =  action(HasIDSchema, async function (props: deletePropsActionProps) {
+export const DeleteUserAction =  action(HasIDSchema, async function (props: deleteActionProps) {
     const data = await deleteUserById(props)
     return data
 })

@@ -15,7 +15,6 @@ type roleType = {
       password: string
     }
   }
-  type deletePropsActionProps = {id:number}
   type  getRoleByIdResult = responseSuccess<roleType>
   type getRolesResult = responseSuccess<roleType[]>
-  export type {editRoleByIdProps,getRoleByIdResult,getRolesResult,roleType,deletePropsActionProps}
+  export type {editRoleByIdProps,getRoleByIdResult,getRolesResult,roleType}

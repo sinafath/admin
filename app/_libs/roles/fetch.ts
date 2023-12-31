@@ -3,22 +3,22 @@ import authenticatedFetch, { authenticatedDelete, authenticatedPatch, authentica
 import { editRoleByIdProps, getRoleByIdResult, getRolesResult } from "./types";
 import idType from "@/libs/types/idType";
 
-
+const route = "/api/v1/role"
 
 function getRolesPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: init) {
-    return authenticatedFetch<getRolesResult>(appendParams("/api/v1/role",
+    return authenticatedFetch<getRolesResult>(appendParams(route,
         { page, id, perPage }),
         init
     )
 }
 function getRoleById({ id }: idType, init?: init) {
-    return authenticatedFetch<getRoleByIdResult>(`/api/v1/role/${id}`,
+    return authenticatedFetch<getRoleByIdResult>(`${route}/${id}`,
         init
     )
 }
 function deleteRoleById({ id }: idType, init?: init) {
     return authenticatedDelete(
-        `/api/v1/role/${id} `,
+        `${route}/${id} `,
         {
             notification: "نقش با موفقیت حذف شد",
             ...init
@@ -27,7 +27,7 @@ function deleteRoleById({ id }: idType, init?: init) {
 }
 function editRoleById({ id, name, defaultValue = false }: editRoleByIdProps, init?: init) {
     return authenticatedPatch(
-        `/api/v1/role/${id} `,
+        `${route}/${id} `,
         {
             body: {
                 name: name,
@@ -41,7 +41,7 @@ function editRoleById({ id, name, defaultValue = false }: editRoleByIdProps, ini
 }
 function addRole({ id, name, defaultValue = false }: editRoleByIdProps, init?: init) {
     return authenticatedPost(
-        `/api/v1/role `,
+        route,
         {
             body: {
                 name: name,

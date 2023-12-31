@@ -8,7 +8,7 @@ type userType = {
   username: string,
   deleted: null
 }
-type deletePropsActionProps = { id: number }
+type deleteActionProps = { id: number }
 type getUserByIdResult = responseSuccess<userType>
 type getUsersResult = responseSuccess<userType[]>
-export type { addUserByIdProps, getUserByIdResult, getUsersResult, userType, deletePropsActionProps }
+export type { addUserByIdProps, getUserByIdResult, getUsersResult, userType, deleteActionProps }
