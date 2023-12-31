@@ -6,9 +6,9 @@ import {
 import classes from './Login.module.css';
 import { login } from '../_libs/auth/actions';
 import Button from '../_components/Form/Submit';
-import PasswordInput from '../_components/Form/PasswordInput';
+import PasswordInput from '../_components/Form/Inputs/PasswordInput';
 import { Form } from '../_components/Form/Form';
-import TextInput from '../_components/Form/TextInput';
+import EmailInput from '../_components/Form/Inputs/EmailInput';
 
 
 
@@ -20,8 +20,8 @@ function AuthenticationImage() {
                     به پنل ادمین خوش آمدید
                 </Title>
                 <Form action={login}>
-                    <TextInput name='email' label="ایمیل" placeholder="hello@gmail.com" />
-                    <PasswordInput name='password' />
+                    <EmailInput />
+                    <PasswordInput/>
                     <Button>
                         ورود
                     </Button>

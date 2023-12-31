@@ -1,6 +1,9 @@
-type PostProductResult = {}
+import responseSuccess from "@/libs/types/response"
+
+type addProductProps = { userId: number, name: string, durationTime?: number }
+type editProductByIdProps = addProductProps & {id:number}
+
 type productType = {
-  
     id: number,
   name: string,
     durationTime: number,
@@ -9,12 +12,7 @@ type productType = {
   
 }
 
-type GetProductByIdResult = productType
-type GetProducsResult =  {
-  timestamp: '2023-12-29T09:45:49.758Z',
-  status: 'success',
-  data: productType[],
-  statusCode: 200
-}
+type GetProductByIdResult = responseSuccess<productType>
+type GetProducsResult =  responseSuccess<productType[]>
 
-export type { PostProductResult, GetProductByIdResult, GetProducsResult }
+export type { addProductProps, GetProductByIdResult, GetProducsResult,editProductByIdProps }

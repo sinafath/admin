@@ -11,11 +11,10 @@ function Notification({ message }: NotificationProps) {
             autoClose: 3000,
             title: "موفق",
             message,
-            withCloseButton:true
+            withCloseButton: true
         })
-    },[message])
+    })
     return <Notifications />
-
 }
 
 export default Notification

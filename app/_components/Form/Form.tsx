@@ -1,55 +1,45 @@
 "use client"
 
-import objectToFormData from '@/libs/converts/objectToFormData/objectToFormData';
-import { Box, BoxProps, Text, TextInput } from '@mantine/core';
+import { Box, BoxProps, Text } from '@mantine/core';
 import { createFormContext } from '@mantine/form';
-import { notifications } from '@mantine/notifications';
+import { PropsWithChildren, useEffect } from 'react';
+import { useAction } from "next-safe-action/hook";
+import { SafeAction } from 'next-safe-action/.';
+import { z } from 'zod';
 import { useRouter } from 'next/navigation';
-import { PropsWithChildren, useEffect, useTransition } from 'react';
-import { useFormState } from 'react-dom';
 
-type state = {
-    errors?: {}
-    statusCode?: number
-    message?: string
-} | null
-type action = Promise<state>
-type FormProps = PropsWithChildren<{
-    initialValues?: {}
-    action: any
-    variables?:{}
-    redirect?:string
+type FormProps<Schema extends z.ZodTypeAny, data> = PropsWithChildren<{
+    initialValues?: Partial<z.TypeOf<Schema>>
+    action: SafeAction<Schema, data>
+    routeBack?:boolean
 }> & BoxProps
 const [FormProvider, useFormContext, useForm] =
     createFormContext<{}>();
-function Form({ initialValues, children, action,variables,redirect,...props }: FormProps) {
-    const [state, dispatch] = useFormState<action>(action as (state: state) => action | Promise<action>, null)
-    const { errors, message, statusCode } = state || {}
-    const [, startTransition] = useTransition();
-
-    const {push,refresh} = useRouter()
-    console.log({initialValues})
+useAction
+function Form<Schema extends z.ZodTypeAny, data>({ initialValues, children, action,routeBack, ...props }: FormProps<Schema, data>) {
     const withInitialValue = initialValues ? {
         initialValues
     } : {}
     const form = useForm(withInitialValue)
+    const { execute, result,status } = useAction(action)
+    const route = useRouter()
+    
     useEffect(() => {
-        errors && form.setErrors(errors)
-        statusCode === 500 && message && notifications.show({
-            autoClose: 4000,
-            title: 500,
-            message,
-        })
-    }, [errors, message])
+        result.validationError && form.setErrors(result.validationError)
+        if(status === "hasSucceeded" && routeBack) {
+            route.back()
+        }
+    }, [result && status])
     return (
         <FormProvider form={form}>
-            <Box component='form' {...props} action={action} >
+            <Box component='form' action={() =>  execute(form.values)} {...props}>
                 {children}
             </Box>
             <Text c="red" pt={10}>
-                {message}
+                {result.serverError}
             </Text >
         </FormProvider>
     );
 }
+export type {FormProps}
 export { useFormContext, Form }

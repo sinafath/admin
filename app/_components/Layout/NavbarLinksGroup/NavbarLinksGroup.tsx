@@ -32,9 +32,9 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
   } as LinkProps)
   return (
     <>
-      <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
+      <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control} {...propsLink}>
         <Group justify="space-between" gap={0}>
-          <Box style={{ display: 'flex', alignItems: 'center' }} {...propsLink} >
+          <Box style={{ display: 'flex', alignItems: 'center' }}  >
             <ThemeIcon variant="light" size={30}>
               <Icon style={{ width: rem(18), height: rem(18) }} />
             </ThemeIcon>

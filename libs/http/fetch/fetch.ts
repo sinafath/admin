@@ -31,21 +31,24 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
           config.body = JSON.stringify(body)
      }
      return fetch(`${process.env.API_URL}${input}`, {
-          cache:"no-store",
-          ...config})
+          cache: "no-store",
+          ...config
+     })
           .then(async response => {
                const data = await response.json()
                if (response.ok) {
                     (config.method === "POST" || config.method === "DELETE" || config.method === "PATCH" || notification) && notificationHandler()
                     return data
                } else {
-                    return Promise.reject(data)
+                    console.log({ url:`${process.env.API_URL}${input}`,config,data:data?.errors?.message })
+                    return Promise.reject(new Error(data))
                }
           })
 }
-const authenticatedDelete = (input: input, init?: init) => authenticatedFetch(input, { method: "DELETE" });
-const authenticatedEdit = (input: input, init?: init) => authenticatedFetch(input, { method: "PATCH" });
+const authenticatedDelete = (input: input, init?: init) => authenticatedFetch(input, { method: "DELETE", ...init });
+const authenticatedPatch = (input: input, init?: init) => authenticatedFetch(input, { method: "PATCH", ...init });
+const authenticatedPost = (input: input, init?: init) => authenticatedFetch(input, { method: "POST", ...init });
 
-export { authenticatedDelete,authenticatedEdit }
+export { authenticatedDelete, authenticatedPatch, authenticatedPost }
 export type { init }
 export default authenticatedFetch

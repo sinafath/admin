@@ -3,7 +3,7 @@ import { IconLogout } from '@tabler/icons-react';
 import classes from './Footer.module.css';
 import { useFormState, useFormStatus } from 'react-dom';
 import { IconLoader } from '@tabler/icons-react';
-import { logout } from '@/app/_libs/auth/actions';
+import { logoutAction } from '@/app/_libs/auth/actions';
 
 function LogoutButton() {
     const { pending } = useFormStatus()
@@ -19,7 +19,7 @@ function LogoutButton() {
     )
 }
 function Footer() {
-    const [state, dispatch] = useFormState(logout, null)
+    const [state, dispatch] = useFormState(logoutAction, null)
     return (
         <div className={classes.footer}>
             <form action={dispatch}>

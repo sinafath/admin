@@ -21,6 +21,7 @@ type RootLayoutProps = {
 
 export default function RootLayout({ login, dashboard }: RootLayoutProps) {
   const isLoggedIn = getAccessToken()
+  console.log(isLoggedIn?.value)
   return (
     <html lang="fa" dir="rtl" >
       <head>

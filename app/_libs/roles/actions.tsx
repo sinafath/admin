@@ -1,26 +1,29 @@
 "use server"
 
-import middlewares from "@/libs/middleware/middleware"
-import { editRoleById } from "./data"
-import { EditRoleschema } from "./validation"
+import { addRole, deleteRoleById, editRoleById } from "./fetch"
+import { EditRoleSchema ,AddRoleSchema} from "./schema"
+import action from "@/libs/utils/safeAction/safeAction"
+import { deletePropsActionProps } from "./types"
+import revalidateAll from "@/libs/utils/revalidateAll/revalidateAll"
 import { redirect } from "next/navigation"
+import { deleteUserById } from "../users/fetch"
 
-type variablesType = {
-    id: string
-}
-type data = {
-    name: string
-}
-export const EditRoleAction = middlewares(async function ({ name }: data, variables: variablesType) {
-    const { id } = variables
-    console.log({variables,name})
-    const data = await editRoleById(Number(id), name)
+
+export const EditRoleAction = action(EditRoleSchema, async function (props) {
+    const data = await editRoleById(props)
     return data
-},
-    { schema: EditRoleschema, revalidateAll: true}
+}
 )
 
-export const EditRoleAction2 = async function () {
-  
-    redirect("/rokes")
+export const addRoleAction = action(AddRoleSchema, async function (props) {
+    const data = await addRole(props)
+    return data
 }
+)
+
+export const DeleteRoleAction = async function (props: deletePropsActionProps) {
+    revalidateAll()
+    const data = await deleteRoleById(props)
+    return data
+}
+
