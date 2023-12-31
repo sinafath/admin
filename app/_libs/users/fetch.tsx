@@ -11,6 +11,11 @@ function getUsersPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: in
         init
     )
 }
+function getAllUsers( init?: init) {
+    return authenticatedFetch<getUsersResult>("/api/v1/user",
+        init
+    )
+}
 function getUserById({ id }: idType, init?: init) {
     return authenticatedFetch<getUserByIdResult>(`/api/v1/user/${id}`,
         init
@@ -48,4 +53,4 @@ function addUser(porps: addUserByIdProps, init?: init) {
     )
 }
 
-export { getUsersPerPage, deleteUserById, getUserById, editUserById ,addUser}
+export { getUsersPerPage, deleteUserById, getUserById, editUserById ,addUser,getAllUsers}

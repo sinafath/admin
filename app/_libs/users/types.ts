@@ -2,7 +2,7 @@ import responseSuccess from "@/libs/types/response"
 
 type addUserByIdProps = { password: string, email: string, username:string }
 type userType = {
-  id: 2,
+  id: number,
   email: string,
   password: string,
   username: string,

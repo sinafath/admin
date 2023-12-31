@@ -7,6 +7,8 @@ import { EditProductAction } from "@/app/_libs/products/actions";
 import { getProductById } from "@/app/_libs/products/fetch";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import DurationTimeInput from "@/app/_components/Form/Inputs/DurationTimeInput";
+import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
+import { getAllUsers, getUsersPerPage } from "@/app/_libs/users/fetch";
 
 
 type editProductProps = {
@@ -20,11 +22,13 @@ async function EditProduct({
 }: editProductProps) {
   const { id } = params || {}
   const { data: product } = await getProductById({ id: Number(id) })
+  const { data: users } = await getAllUsers()
   const { durationTime, name, userId } = product
   return (
     <Modal title="ویرایش محصول">
       <FormModal action={EditProductAction} initialValues={{ durationTime, name, userId, id: Number(id) }}>
         <NameInput />
+        <UserComboBox data={users}/>
         <DurationTimeInput />
         <Group grow justify="center" pt={25}>
           <Delete />

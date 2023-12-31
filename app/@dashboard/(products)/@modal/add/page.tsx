@@ -6,13 +6,16 @@ import { Group } from "@mantine/core";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import { AddProductAction } from "@/app/_libs/products/actions";
 import DurationTimeInput from "@/app/_components/Form/Inputs/DurationTimeInput";
+import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
+import { getAllUsers } from "@/app/_libs/users/fetch";
 export const revalidate = 0
 
 async function AddProduct() {
-  
+  const {data:users} = await getAllUsers()
   return (
     <Modal title="اضافه کردن محصول">
       <FormModal action={AddProductAction} >
+        <UserComboBox data={users}/>
         <NameInput  />
         <DurationTimeInput/>
         <Group grow justify="center" pt={25}>
