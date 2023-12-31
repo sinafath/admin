@@ -40,7 +40,7 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
                     (config.method === "POST" || config.method === "DELETE" || config.method === "PATCH" || notification) && notificationHandler()
                     return data
                } else {
-                    console.log({ url:`${process.env.API_URL}${input}`,config,data:data?.errors?.message })
+                    console.log({ url:`${process.env.API_URL}${input}`,config,data:data})
                     return Promise.reject(new Error(data))
                }
           })
