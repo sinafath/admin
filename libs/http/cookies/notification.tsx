@@ -8,7 +8,7 @@ const setNotification = (notification: string) => cookies().set('notification', 
     httpOnly: true,
     secure: process.env.NODE_ENV !== 'development',
     path: '/',
-    maxAge: 5,
+    maxAge: 3,
 
 })
 
