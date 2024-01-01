@@ -7,10 +7,8 @@ import searchParams from "@/libs/types/searchParamsType";
 import { Flex, Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 
 async function TableProducts({
-    searchParams,
+    searchParams:{ page, id }={},
 }: searchParams) {
-    const { page, id } = searchParams || {}
-    console.log({ page })
     const cols = ["اسم", "مدت ", "عملیات ها"]
     const { data: { data: products, meta: { total } } } = await getProductsPerPage({ page: Number(page), id })
     return (

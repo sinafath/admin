@@ -11,9 +11,8 @@ import paramsIdType from "@/libs/types/paramsIdType";
 type DeleteRoleProps = paramsIdType
 
 async function DeleteRole({
-  params,
-}: DeleteRoleProps) {
-  const { id } = params || {}
+  params: { id } = {},
+}:  DeleteRoleProps) {
   return (
     <Modal title="حذف نقش">
       <FormModal action={DeleteRoleAction} initialValues={{ id: Number(id) }}>

@@ -15,13 +15,12 @@ import { getAllProducts } from "@/app/_libs/products/fetch";
 
 type EditOrderProps = paramsIdType
 async function EditOrder({
-  params,
+  params: { id } = {},
 }: EditOrderProps) {
-  const { id } = params || {}
-  const [{ data: order }, { data: products }, { data: users }] = await Promise
-    .all([await getOrderById({ id: Number(id) }), getAllProducts(), getAllUsers()])
-  const { productId,
-    userId } = order
+  const [{ data: { productId,
+    userId } }, { data: products }, { data: users }] = await Promise
+      .all([await getOrderById({ id: Number(id) }), getAllProducts(), getAllUsers()])
+
   return (
     <Modal title="ویرایش سفارش">
       <FormModal action={EditOrderAction} initialValues={{

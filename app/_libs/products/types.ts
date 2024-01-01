@@ -6,7 +6,7 @@ type editProductByIdProps = addProductProps & {id:number}
 type productType = {
     id: number,
   name: string,
-    durationTime: number,
+    durationTime: number | null,
     userId: number,
     deleted: null
   

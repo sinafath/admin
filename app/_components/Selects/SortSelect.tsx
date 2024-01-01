@@ -12,9 +12,7 @@ function SortSelect(props: SelectProps) {
     const [_, startTransition] = useTransition();
     function handleSort(sort: string) {
         const params = new URLSearchParams(window.location.search);
-        if(sortUrl === sort) return
         if (sort === data[0]) {
-            
             params.delete('id');
         } else if (sort === data[1]) {
             params.set('id', "asc");
@@ -25,7 +23,7 @@ function SortSelect(props: SelectProps) {
     }
     return <Select
         label="ترتیب"
-        value={sortUrl ?? data[0]}
+        defaultValue={sortUrl ?? data[0]}
         w={160}
         data={data}
         onSearchChange={handleSort}

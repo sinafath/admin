@@ -10,9 +10,8 @@ import paramsIdType from "@/libs/types/paramsIdType";
 type DeletePermissionProps = paramsIdType
 
 async function DeletePermission({
-  params,
+  params: { id } = {},
 }: DeletePermissionProps) {
-  const { id } = params || {}
   return (
     <Modal title="حذف دسترسی">
       <FormModal action={DeletePermissionAction} initialValues={{ id: Number(id) }}>

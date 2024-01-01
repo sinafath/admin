@@ -11,9 +11,8 @@ import { DeleteOrderAction } from "@/app/_libs/orders/actions";
 type DeleteUserProps = paramsIdType
 
 async function DeleteUser({
-  params,
+  params: { id } = {},
 }: DeleteUserProps) {
-  const { id } = params || {}
   return (
     <Modal title="حذف سفارش">
       <FormModal action={DeleteOrderAction} initialValues={{ id: Number(id) }}>

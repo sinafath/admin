@@ -12,19 +12,17 @@ import paramsIdType from "@/libs/types/paramsIdType";
 
 type editRoleProps = paramsIdType
 async function EditRole({
-  params,
+  params: { id } = {},
 }: editRoleProps) {
-  const { id } = params || {}
-  const { data: role } = await getRoleById({ id: Number(id) })
-  const { name } = role
+  const { data: { name } } = await getRoleById({ id: Number(id) })
   return (
     <Modal title="ویرایش نقش">
       <FormModal action={EditRoleAction} initialValues={{ name, id: Number(id) }}>
-        <NameInput/>
-        <HiddenIdInput/>
+        <NameInput />
+        <HiddenIdInput />
         <Group grow justify="center" pt={25}>
           <Delete />
-          <Submit  mt={0}  />
+          <Submit mt={0} />
         </Group>
 
       </FormModal>

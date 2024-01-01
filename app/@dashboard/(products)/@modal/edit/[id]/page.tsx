@@ -14,14 +14,17 @@ import paramsIdType from "@/libs/types/paramsIdType";
 
 type editProductProps = paramsIdType
 async function EditProduct({
-  params,
+  params: { id } = {},
 }: editProductProps) {
-  const { id } = params || {}
   const [{ data: product }, { data: users }] = await Promise.all([getProductById({ id: Number(id) }), getAllUsers()])
-  const { durationTime, name, userId } = product
+  const { durationTime, name, userId } = product || {}
+  console.log(product)
   return (
     <Modal title="ویرایش محصول">
-      <FormModal action={EditProductAction} initialValues={{ durationTime, name, userId, id: Number(id) }}>
+      <FormModal action={EditProductAction} initialValues={{
+        durationTime: durationTime ?? undefined,
+        name, userId, id: Number(id)
+      }}>
         <NameInput />
         <UserComboBox data={users} />
         <DurationTimeInput />

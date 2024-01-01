@@ -8,11 +8,10 @@ import { TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 const route = "/users"
 
 async function TableUsers({
-    searchParams,
+    searchParams: { page, id } = {},
 }: searchParams) {
-    const { page,id } = searchParams || {}
     const cols = ["نام کاربری", "ایمیل", "عملیات ها"]
-    const { data: { data: users, meta: { total } } } = await getUsersPerPage({ page: Number(page) ,id})
+    const { data: { data: users, meta: { total } } } = await getUsersPerPage({ page: Number(page), id })
     return (
         <>
             <Button href={`${route}/add`} >اضافه کردن</Button>

@@ -18,18 +18,16 @@ import { RouteComboBox } from "@/app/_components/Form/ComoboBox/RouteComboBox";
 type EditPermissionsProps = paramsIdType
 
 async function EditPermissions({
-  params,
+  params: { id } = {},
 }: EditPermissionsProps) {
-  const { id } = params || {}
-  const [{ data: roles }, { data: routes }, { data: permission }] = await Promise.all([getAllRoles()
+  const [{ data: roles }, { data: routes }, { data: { name } }] = await Promise.all([getAllRoles()
     , getAllRoutes(), getPermissionById({ id: Number(id) })])
-  const { name, } = permission
   return (
     <Modal title="ویرایش دسترسی">
       <FormModal action={EditPermissionAction} initialValues={{ name, id: Number(id) }}>
         <NameInput />
         <RoleSelectComboBox data={roles} />
-        <RouteComboBox data={routes}/>
+        <RouteComboBox data={routes} />
         <HiddenIdInput />
         <Group grow justify="center" pt={25}>
           <Delete />

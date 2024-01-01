@@ -11,9 +11,8 @@ import paramsIdType from "@/libs/types/paramsIdType";
 type DeleteUserProps = paramsIdType
 
 async function DeleteUser({
-  params,
-}: DeleteUserProps) {
-  const { id } = params || {}
+  params: { id } = {},
+}:DeleteUserProps) {
   return (
     <Modal title="حذف کاربر">
       <FormModal action={DeleteUserAction} initialValues={{ id: Number(id) }}>

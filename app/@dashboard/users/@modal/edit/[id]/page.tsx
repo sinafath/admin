@@ -14,11 +14,9 @@ import paramsIdType from "@/libs/types/paramsIdType";
 
 type editUserProps = paramsIdType
 async function EditUser({
-  params,
+  params: { id } = {},
 }: editUserProps) {
-  const { id } = params || {}
-  const { data: user } = await getUserById({ id: Number(id) })
-  const { email, password, username } = user
+  const { data: { email, password, username }  } = await getUserById({ id: Number(id) })
   return (
     <Modal title="ویرایش نام کاربری">
       <FormModal action={EditUserAction} initialValues={{ email, password, username, id: Number(id) }}>
