@@ -1,4 +1,4 @@
-import Delete from "@/app/_components/Buttons/Delete";
+import Delete from "@/app/_components/Buttons/Cancel";
 import { FormModal } from "@/app/_components/Form/FormModal";
 import PasswordInput from "@/app/_components/Form/Inputs/PasswordInput";
 import Submit from "@/app/_components/Form/Submit";

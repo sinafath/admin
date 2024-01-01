@@ -1,4 +1,4 @@
-import Delete from "@/app/_components/Buttons/Delete";
+import Delete from "@/app/_components/Buttons/Cancel";
 import { FormModal } from "@/app/_components/Form/FormModal";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import Submit from "@/app/_components/Form/Submit";
@@ -7,14 +7,10 @@ import { EditRoleAction } from "@/app/_libs/roles/actions";
 import { getRoleById } from "@/app/_libs/roles/fetch";
 import { Group } from "@mantine/core";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
+import paramsIdType from "@/libs/types/paramsIdType";
 
 
-type editRoleProps = {
-  params?: {
-    id?: string;
-  };
-}
-export const revalidate = 0
+type editRoleProps = paramsIdType
 async function EditRole({
   params,
 }: editRoleProps) {

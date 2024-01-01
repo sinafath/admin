@@ -1,4 +1,4 @@
-import Delete from "@/app/_components/Buttons/Delete";
+import Delete from "@/app/_components/Buttons/Cancel";
 import { FormModal } from "@/app/_components/Form/FormModal";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
@@ -8,27 +8,22 @@ import { getProductById } from "@/app/_libs/products/fetch";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import DurationTimeInput from "@/app/_components/Form/Inputs/DurationTimeInput";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
-import { getAllUsers, getUsersPerPage } from "@/app/_libs/users/fetch";
+import { getAllUsers } from "@/app/_libs/users/fetch";
+import paramsIdType from "@/libs/types/paramsIdType";
 
 
-type editProductProps = {
-  params?: {
-    id?: string;
-  };
-}
-export const revalidate = 0
+type editProductProps = paramsIdType
 async function EditProduct({
   params,
 }: editProductProps) {
   const { id } = params || {}
-  const { data: product } = await getProductById({ id: Number(id) })
-  const { data: users } = await getAllUsers()
+  const [{ data: product }, { data: users }] = await Promise.all([getProductById({ id: Number(id) }), getAllUsers()])
   const { durationTime, name, userId } = product
   return (
     <Modal title="ویرایش محصول">
       <FormModal action={EditProductAction} initialValues={{ durationTime, name, userId, id: Number(id) }}>
         <NameInput />
-        <UserComboBox data={users}/>
+        <UserComboBox data={users} />
         <DurationTimeInput />
         <Group grow justify="center" pt={25}>
           <Delete />

@@ -1,0 +1,11 @@
+.main{
+    margin: 70px;
+
+    margin-bottom: 0;
+    margin-top: 0;
+}
+@media (max-width: $mantine-breakpoint-xs) {
+    .main {
+        margin: 20px;
+    }
+  }

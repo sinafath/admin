@@ -2,9 +2,9 @@
 
 import { addUser, deleteUserById, editUserById } from "./fetch"
 import { EditUserSchema ,AddUserSchema} from "./schema"
-import action from "@/libs/utils/safeAction/safeAction"
+import action from "@/libs/http/safeAction/safeAction"
 import { deleteActionProps } from "./types"
-import HasIDSchema from "@/libs/schema/HasIDSchema"
+import HasIDSchema from "@/libs/Zod/schema/IDSchema"
 
 
 export const EditUserAction = action(EditUserSchema, async function (props) {

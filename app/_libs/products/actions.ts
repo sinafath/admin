@@ -1,9 +1,9 @@
 "use server"
 
-import action from "@/libs/utils/safeAction/safeAction"
 import { AddProductSchema, EditProductSchema } from "./schema"
 import { addProduct, deleteProductById, editProductById } from "./fetch"
-import HasIDSchema from "@/libs/schema/HasIDSchema"
+import HasIDSchema from "@/libs/Zod/schema/IDSchema"
+import action from "@/libs/http/safeAction/safeAction"
 
 export const EditProductAction = action(EditProductSchema, async function (props) {
     const data = await editProductById(props)

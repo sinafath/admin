@@ -1,8 +1,8 @@
 "use server"
 
 import { addPermission, deletePermissionById, editPermissionById } from "./fetch"
-import action from "@/libs/utils/safeAction/safeAction"
-import HasIDSchema from "@/libs/schema/HasIDSchema"
+import action from "@/libs/http/safeAction/safeAction"
+import HasIDSchema from "@/libs/Zod/schema/IDSchema"
 import { AddPermissionSchema, EditPermissionSchema } from "./schema"
 
 

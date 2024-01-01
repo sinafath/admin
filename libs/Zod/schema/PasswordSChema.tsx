@@ -1,5 +1,5 @@
 import { z } from "zod";
-import ZodString from "../Zod/ZodString";
+import ZodString from "../effect/ZodString";
 
 const HasPassword = z.object({
     password: ZodString("رمز")

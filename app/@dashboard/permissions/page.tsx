@@ -1,47 +1,50 @@
-import Delete from "@/app/_components/Actions/Delete";
-import Edit from "@/app/_components/Actions/Edit";
-import Button from "@/app/_components/Table/Button";
-import { Table, Thead } from "@/app/_components/Table/Table";
-import { getProductsPerPage } from "@/app/_libs/products/fetch";
-import { getRolesPerPage } from "@/app/_libs/roles/fetch";
-import appendParams from "@/libs/http/searchParams/appendParams";
-import { Box, Flex, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
+import { Edit, Delete, ButtonGroup } from "@/app/_components/Buttons";
+import Pagination from "@/app/_components/Pagination/Pagination";
+import SortSelect from "@/app/_components/Selects/SortSelect";
+import { Table, Thead, Button } from "@/app/_components/Table/Table";
+import { getPermissionsPerPage } from "@/app/_libs/permissions/fetch";
+import searchParams from "@/libs/types/searchParamsType";
+import { Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 
-type TableProps<col extends string> = {
-    data: {
-        [key in col]: string;
-    }[]
-    cols: string[]
-}
-export const revalidate = 0
+const route = "/permissions"
 
-async function Dashboard() {
-    const cols = ["اسم", "وصل شده", "عملیات ها"]
-    const roles = await getRolesPerPage()
+async function TablePermissions({
+    searchParams,
+}: searchParams) {
+    const { page,id } = searchParams || {}
+
+    const cols = ["اسم", "خوانده شده", "عملیات ها"]
+    const { data: { data: permissions, meta: { total } } } = await getPermissionsPerPage({ page: Number(page),id })
     return (
-        <><Button href={"/roles/add"} >اضافه کردن</Button>
-        <Table >
-            <Thead >
-                <TableTr>
-                    {cols.map((col) => (
-                        <TableTh key={col}>{col}</TableTh>
-                    ))}
-                </TableTr>
-            </Thead>
-            <TableTbody>{roles.data.map(({assignee,name,id}, index) => (
-                <TableTr key={index}>
-                    <TableTd >{name}</TableTd>
-                    <TableTd >{assignee?.username}</TableTd>
-                    <TableTd >
-                        <Flex gap={5}> 
-                        <Delete href={`/roles/delete/${id}`}/>
-                        <Edit  href={`/roles/edit/${id}`}/>
-                        </Flex>
-                    </TableTd>
-                </TableTr>
-            ))}</TableTbody>
-        </Table>
+        <>
+            <Group justify="space-between" mb={10}>
+                <Button  href={`${route}/add`}  >اضافه کردن</Button>
+                <SortSelect />
+            </Group>
+            <Table >
+                <Thead >
+                    <TableTr>
+                        {cols.map((col) => (
+                            <TableTh key={col}>{col}</TableTh>
+                        ))}
+                    </TableTr>
+                </Thead>
+                <TableTbody>{permissions.map(({ name, id, read, }, index) => (
+                    <TableTr key={index}>
+                        <TableTd >{name}</TableTd>
+                        <TableTd >{read}</TableTd>
+                        <TableTd >
+                            <ButtonGroup>
+                                <Delete href={`${route}/delete/${id}`} />
+                                <Edit href={`${route}/edit/${id}`} />
+                            </ButtonGroup>
+                        </TableTd>
+                    </TableTr>
+                ))}</TableTbody>
+            </Table>
+            <Pagination total={total} />
+
         </>
     )
 }
-export default Dashboard
+export default TablePermissions

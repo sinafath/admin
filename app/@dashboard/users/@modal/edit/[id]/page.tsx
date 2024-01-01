@@ -1,4 +1,4 @@
-import Delete from "@/app/_components/Buttons/Delete";
+import Delete from "@/app/_components/Buttons/Cancel";
 import { FormModal } from "@/app/_components/Form/FormModal";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import PasswordInput from "@/app/_components/Form/Inputs/PasswordInput";
@@ -9,17 +9,13 @@ import { getUserById } from "@/app/_libs/users/fetch";
 import { Group } from "@mantine/core";
 import UsernameInput from "@/app/_components/Form/Inputs/UsernameInput";
 import EmailInput from "@/app/_components/Form/Inputs/EmailInput";
+import paramsIdType from "@/libs/types/paramsIdType";
 
 
-type editRoleProps = {
-  params?: {
-    id?: string;
-  };
-}
-export const revalidate = 0
+type editUserProps = paramsIdType
 async function EditUser({
   params,
-}: editRoleProps) {
+}: editUserProps) {
   const { id } = params || {}
   const { data: user } = await getUserById({ id: Number(id) })
   const { email, password, username } = user

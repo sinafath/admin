@@ -1,5 +1,5 @@
 import { z } from "zod";
-import ZodString from "../Zod/ZodString";
+import ZodString from "../effect/ZodString";
 
 const PasswordStrictSchema = z.object({
     password:ZodString("رمز").refine((password) => {

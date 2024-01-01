@@ -1,48 +1,44 @@
-import Delete from "@/app/_components/Actions/Delete";
-import Edit from "@/app/_components/Actions/Edit";
-import Button from "@/app/_components/Table/Button";
-import { Table, Thead } from "@/app/_components/Table/Table";
-import { getProductsPerPage } from "@/app/_libs/products/fetch";
-import { getRolesPerPage } from "@/app/_libs/roles/fetch";
+import { Edit, Delete, ButtonGroup } from "@/app/_components/Buttons";
+import Pagination from "@/app/_components/Pagination/Pagination";
+import { Table, Thead, Button } from "@/app/_components/Table/Table";
 import { getUsersPerPage } from "@/app/_libs/users/fetch";
-import appendParams from "@/libs/http/searchParams/appendParams";
-import { Box, Flex, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
+import searchParams from "@/libs/types/searchParamsType";
+import { TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 
-type TableProps<col extends string> = {
-    data: {
-        [key in col]: string;
-    }[]
-    cols: string[]
-}
-export const revalidate = 0
+const route = "/users"
 
-async function Dashboard() {
+async function TableUsers({
+    searchParams,
+}: searchParams) {
+    const { page,id } = searchParams || {}
     const cols = ["نام کاربری", "ایمیل", "عملیات ها"]
-    const {data:users} = await getUsersPerPage()
+    const { data: { data: users, meta: { total } } } = await getUsersPerPage({ page: Number(page) ,id})
     return (
-        <><Button href={"/users/add"} >اضافه کردن</Button>
-        <Table >
-            <Thead >
-                <TableTr>
-                    {cols.map((col) => (
-                        <TableTh key={col}>{col}</TableTh>
-                    ))}
-                </TableTr>
-            </Thead>
-            <TableTbody>{users.map(({email,username,id}, index) => (
-                <TableTr key={index}>
-                    <TableTd >{username}</TableTd>
-                    <TableTd >{email}</TableTd>
-                    <TableTd >
-                        <Flex gap={5}> 
-                        <Delete href={`/users/delete/${id}`}/>
-                        <Edit  href={`/users/edit/${id}`}/>
-                        </Flex>
-                    </TableTd>
-                </TableTr>
-            ))}</TableTbody>
-        </Table>
+        <>
+            <Button href={`${route}/add`} >اضافه کردن</Button>
+            <Table >
+                <Thead >
+                    <TableTr>
+                        {cols.map((col) => (
+                            <TableTh key={col}>{col}</TableTh>
+                        ))}
+                    </TableTr>
+                </Thead>
+                <TableTbody>{users.map(({ email, username, id }, index) => (
+                    <TableTr key={index}>
+                        <TableTd >{username}</TableTd>
+                        <TableTd >{email}</TableTd>
+                        <TableTd >
+                            <ButtonGroup>
+                                <Delete href={`${route}/delete/${id}`} />
+                                <Edit href={`${route}/edit/${id}`} />
+                            </ButtonGroup>
+                        </TableTd>
+                    </TableTr>
+                ))}</TableTbody>
+            </Table>
+            <Pagination total={total} />
         </>
     )
 }
-export default Dashboard
+export default TableUsers

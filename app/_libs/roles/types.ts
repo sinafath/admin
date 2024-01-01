@@ -1,4 +1,4 @@
-import responseSuccess from "@/libs/types/response"
+import responseSuccessType, { responseSuccessPagination } from "@/libs/types/responseType"
 
 type editRoleByIdProps = { id?: number, name?: String, defaultValue?: boolean | undefined }
 type roleType = {
@@ -15,6 +15,8 @@ type roleType = {
       password: string
     }
   }
-  type  getRoleByIdResult = responseSuccess<roleType>
-  type getRolesResult = responseSuccess<roleType[]>
-  export type {editRoleByIdProps,getRoleByIdResult,getRolesResult,roleType}
+  type  getRoleByIdResult = responseSuccessType<roleType>
+  type getAllRolesResult = responseSuccessType<roleType[]>
+  type getRolesResult = responseSuccessPagination<roleType[]>
+
+  export type {editRoleByIdProps,getRoleByIdResult,getRolesResult,roleType,getAllRolesResult}

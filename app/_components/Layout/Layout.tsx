@@ -4,6 +4,7 @@ import NavbarNested from './NavbarNested/NavbarNested';
 import { ReactNode } from 'react';
 import { IconBrandMantine, IconDog } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
+import classes from './Layout.module.css';
 
 type LayoutProps = {
     children: ReactNode
@@ -22,7 +23,7 @@ function Layout({ children }: LayoutProps) {
                 </Group>
             </AppShell.Header>
             <NavbarNested />
-            <AppShell.Main m={70} my={0} pt={80}>{children}</AppShell.Main>
+            <AppShell.Main className={classes.main} pt={80}>{children}</AppShell.Main>
         </AppShell>
     );
 }

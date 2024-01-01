@@ -17,7 +17,6 @@ export function UserComboBox({data}:UserComboBoxProps) {
     const form = useFormContext();
 
     const { value , onChange, onBlur, onFocus, ...props } = form.getInputProps('userId')
-    console.log(value)
     const [search, setSearch] = useState('');
 
     const shouldFilterOptions = data.every((item) => item.username !== search);
@@ -30,10 +29,8 @@ export function UserComboBox({data}:UserComboBoxProps) {
             {item.username}
         </Combobox.Option>
     ));
-    console.log({value})
     useEffect(()=>{
         const initialValue = findById(value)
-        console.log({initialValue})
         const { username } = initialValue || {}
         username && setSearch(username);
     },[])

@@ -1,4 +1,4 @@
-import responseSuccess from "@/libs/types/response"
+import responseSuccessType, { responseSuccessPagination } from "@/libs/types/responseType"
 
 type addUserByIdProps = { password: string, email: string, username:string }
 type userType = {
@@ -9,6 +9,7 @@ type userType = {
   deleted: null
 }
 type deleteActionProps = { id: number }
-type getUserByIdResult = responseSuccess<userType>
-type getUsersResult = responseSuccess<userType[]>
-export type { addUserByIdProps, getUserByIdResult, getUsersResult, userType, deleteActionProps }
+type getUserByIdResult = responseSuccessType<userType>
+type getAllUsersResult = responseSuccessType<userType[]>
+type getUsersResult = responseSuccessPagination<userType[]>
+export type { addUserByIdProps, getUserByIdResult,getAllUsersResult, getUsersResult, userType, deleteActionProps }

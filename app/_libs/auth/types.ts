@@ -1,6 +1,6 @@
-import responseSuccess from "@/libs/types/response"
+import responseSuccessType from "@/libs/types/responseType"
 
-type loginResultType = responseSuccess<{
+type loginResultType = responseSuccessType<{
     access_token: string,
     roles: {
         id: number,

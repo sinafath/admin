@@ -17,7 +17,9 @@ import Footer from '../Footer/Footer';
 
 const mockdata = [
   
-  { label: 'محصول', icon: IconAdjustments, link: '/' },
+  { label: 'محصولات', icon: IconAdjustments, link: '/' },
+  { label: 'سفارش ها', icon: IconAdjustments, link: '/orders' },
+
   {
     label: 'کاربر',
     icon: IconNotes,
@@ -25,7 +27,7 @@ const mockdata = [
     links: [
       { label: 'نقش ها', link: '/roles' },
       { label: 'کاربران', link: '/users' },
-      { label: 'مجوز ها', link: '/' }
+      { label: 'مجوز ها', link: '/permissions' }
     ],
   }
 

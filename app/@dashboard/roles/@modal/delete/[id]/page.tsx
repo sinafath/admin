@@ -1,18 +1,14 @@
-import Delete from "@/app/_components/Buttons/Delete";
+import Delete from "@/app/_components/Buttons/Cancel";
 import { FormModal } from "@/app/_components/Form/FormModal";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import { DeleteRoleAction } from "@/app/_libs/roles/actions";
 import {  Group } from "@mantine/core";
-import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
+import paramsIdType from "@/libs/types/paramsIdType";
 
 
-type DeleteRoleProps = {
-  params?: {
-    id?: string;
-  };
-}
+type DeleteRoleProps = paramsIdType
 
 async function DeleteRole({
   params,

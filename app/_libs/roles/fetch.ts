@@ -1,12 +1,18 @@
 import appendParams from "@/libs/http/searchParams/appendParams";
 import authenticatedFetch, { authenticatedDelete, authenticatedPatch, authenticatedPost, init } from "@/libs/http/fetch/fetch";
-import { editRoleByIdProps, getRoleByIdResult, getRolesResult } from "./types";
+import { editRoleByIdProps, getAllRolesResult, getRoleByIdResult, getRolesResult } from "./types";
 import idType from "@/libs/types/idType";
 
 const route = "/api/v1/role"
 
+function getAllRoles(init?: init) {
+    return authenticatedFetch<getAllRolesResult>(route,
+        init
+    )
+}
+
 function getRolesPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: init) {
-    return authenticatedFetch<getRolesResult>(appendParams(route,
+    return authenticatedFetch<getRolesResult>(appendParams(`${route}/page`,
         { page, id, perPage }),
         init
     )
@@ -54,4 +60,4 @@ function addRole({ id, name, defaultValue = false }: editRoleByIdProps, init?: i
     )
 }
 
-export { getRolesPerPage, deleteRoleById, getRoleById, editRoleById ,addRole}
+export { getRolesPerPage, deleteRoleById, getRoleById, editRoleById, addRole ,getAllRoles}

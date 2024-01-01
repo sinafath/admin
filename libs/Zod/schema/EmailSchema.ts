@@ -1,5 +1,5 @@
 import { z } from "zod";
-import ZodEmail from "../Zod/ZodEmail";
+import ZodEmail from "../effect/ZodEmail";
 
 const HasEmail = z.object({  email:ZodEmail()})
 

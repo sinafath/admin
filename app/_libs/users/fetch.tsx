@@ -1,18 +1,18 @@
 import appendParams from "@/libs/http/searchParams/appendParams";
 import authenticatedFetch, { authenticatedDelete, authenticatedPatch, authenticatedPost, init } from "@/libs/http/fetch/fetch";
-import { addUserByIdProps, getUserByIdResult, getUsersResult } from "./types";
+import { addUserByIdProps, getAllUsersResult, getUserByIdResult, getUsersResult } from "./types";
 import idType from "@/libs/types/idType";
 
 
 const route = "/api/v1/user"
 function getUsersPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: init) {
-    return authenticatedFetch<getUsersResult>(appendParams(route,
+    return authenticatedFetch<getUsersResult>(appendParams(`${route}/page`,
         { page, id, perPage }),
         init
     )
 }
 function getAllUsers( init?: init) {
-    return authenticatedFetch<getUsersResult>(route,
+    return authenticatedFetch<getAllUsersResult>(route,
         init
     )
 }

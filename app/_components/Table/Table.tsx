@@ -3,6 +3,7 @@
 import cx from 'clsx';
 import { Table as MantineTable, TableProps,  TableThead, TableTheadProps } from '@mantine/core';
 import classes from './Table.module.css';
+import Button from './Button';
 
 
 // type TableProps<col extends string> = {
@@ -37,4 +38,4 @@ import classes from './Table.module.css';
 const Thead = (props: TableTheadProps) => <TableThead className={cx(classes.header)} {...props} />
 const Table = (props: TableProps) => <MantineTable miw={700} verticalSpacing="sm" withTableBorder striped  {...props} />
 
-export { Thead, Table}
+export { Thead, Table ,Button}

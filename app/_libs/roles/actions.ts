@@ -2,9 +2,8 @@
 
 import { addRole, deleteRoleById, editRoleById } from "./fetch"
 import { EditRoleSchema ,AddRoleSchema} from "./schema"
-import action from "@/libs/utils/safeAction/safeAction"
-import revalidateAll from "@/libs/utils/revalidateAll/revalidateAll"
-import HasIDSchema from "@/libs/schema/HasIDSchema"
+import action from "@/libs/http/safeAction/safeAction"
+import HasIDSchema from "@/libs/Zod/schema/IDSchema"
 
 
 export const EditRoleAction = action(EditRoleSchema, async function (props) {
@@ -20,7 +19,6 @@ export const addRoleAction = action(AddRoleSchema, async function (props) {
 )
 
 export const DeleteRoleAction = action(HasIDSchema,async function (props) {
-    revalidateAll()
     const data = await deleteRoleById(props)
     return data
 })

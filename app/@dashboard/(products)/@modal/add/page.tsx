@@ -1,4 +1,4 @@
-import Delete from "@/app/_components/Buttons/Delete";
+import Delete from "@/app/_components/Buttons/Cancel";
 import { FormModal } from "@/app/_components/Form/FormModal";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
@@ -8,7 +8,6 @@ import { AddProductAction } from "@/app/_libs/products/actions";
 import DurationTimeInput from "@/app/_components/Form/Inputs/DurationTimeInput";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllUsers } from "@/app/_libs/users/fetch";
-export const revalidate = 0
 
 async function AddProduct() {
   const {data:users} = await getAllUsers()

@@ -1,11 +1,17 @@
 import appendParams from "@/libs/http/searchParams/appendParams";
 import authenticatedFetch, { authenticatedDelete, authenticatedPatch, authenticatedPost, init } from "@/libs/http/fetch/fetch";
-import { GetProducsResult, GetProductByIdResult, addProductProps, editProductByIdProps } from "./types";
+import { GetAllProductsResult,  GetProductByIdResult, GetProductsResult, addProductProps, editProductByIdProps } from "./types";
 import idType from "@/libs/types/idType";
 
 const route = "/api/v1/product"
-function getProductsPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: init) {
-    return authenticatedFetch<GetProducsResult>(appendParams(route,
+function getAllProducts(init?: init) {
+    return authenticatedFetch<GetAllProductsResult>(route,
+        init
+    )
+}
+
+function getProductsPerPage({ page = 1, id = "desc", perPage = 7 } = {}, init?: init) {
+    return authenticatedFetch<GetProductsResult>(appendParams(`${route}/page`,
         { page, id, perPage }),
         init
     )
@@ -47,4 +53,4 @@ function addProduct({ durationTime = 10000, name, userId }: addProductProps, ini
     )
 }
 
-export { getProductsPerPage, deleteProductById, getProductById, editProductById, addProduct }
+export { getProductsPerPage, deleteProductById, getProductById, editProductById, addProduct,getAllProducts }

@@ -1,7 +1,7 @@
-import HasEmail from "@/libs/schema/HasEmail";
-import HasIDSchema from "@/libs/schema/HasIDSchema";
-import HasPassword from "@/libs/schema/HasPassword";
-import PasswordStrictSchema from "@/libs/schema/PasswordStrictSchema";
+import HasEmail from "@/libs/Zod/schema/EmailSchema";
+import HasIDSchema from "@/libs/Zod/schema/IDSchema";
+import HasPassword from "@/libs/Zod/schema/PasswordSChema";
+import PasswordStrictSchema from "@/libs/Zod/schema/PasswordStrictSchema";
 import { z } from "zod";
 
 const userSchema = z.object({

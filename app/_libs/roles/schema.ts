@@ -1,5 +1,5 @@
-import ZodString from "@/libs/Zod/ZodString";
-import HasIDSchema from "@/libs/schema/HasIDSchema";
+import ZodString from "@/libs/Zod/effect/ZodString";
+import HasIDSchema from "@/libs/Zod/schema/IDSchema";
 import { z } from "zod";
 
 const roleSchema = z.object({
