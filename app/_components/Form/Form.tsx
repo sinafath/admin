@@ -23,7 +23,6 @@ function Form<Schema extends z.ZodTypeAny, data>({ initialValues, children, acti
     const { execute, result,status } = useAction(action)
     const route = useRouter()
 
-    console.log({result,form:form.values})
     useEffect(() => {
         result.validationError && form.setErrors(result.validationError)
         if(status === "hasSucceeded" && routeBack) {

@@ -25,7 +25,7 @@ function Pagination(props: PaginationProps) {
     },300)
 
     return <Center w={"100%"} >
-        <MantinePagination mb={"md"} defaultValue={Number(pageUrl) ?? 1} mt="md" mx={"auto"}  {...props} onChange={handlePagination} />
+        <MantinePagination mb={"md"} defaultValue={Number(pageUrl ?? 1) } mt="md" mx={"auto"}  {...props} onChange={handlePagination} />
     </Center>
 }
 export default Pagination

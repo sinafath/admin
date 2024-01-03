@@ -13,6 +13,7 @@ import paramsIdType from "@/libs/types/paramsIdType";
 import { RoleSelectComboBox } from "@/app/_components/Form/ComoboBox/RoleSelectComboBox";
 import getAllRoutes from "@/app/_libs/routes/fetch";
 import { RouteComboBox } from "@/app/_components/Form/ComoboBox/RouteComboBox";
+import ReadInput from "@/app/_components/Form/Inputs/ReadInput";
 
 
 type EditPermissionsProps = paramsIdType
@@ -24,11 +25,12 @@ async function EditPermissions({
     , getAllRoutes(), getPermissionById({ id: Number(id) })])
   return (
     <Modal title="ویرایش دسترسی">
-      <FormModal action={EditPermissionAction} initialValues={{ name, id: Number(id) }}>
+      <FormModal action={EditPermissionAction} initialValues={{ name, id: Number(id)  }}>
         <NameInput />
         <RoleSelectComboBox data={roles} />
         <RouteComboBox data={routes} />
         <HiddenIdInput />
+        <ReadInput/>
         <Group grow justify="center" pt={25}>
           <Delete />
           <Submit mt={0} />

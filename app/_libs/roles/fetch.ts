@@ -11,7 +11,7 @@ function getAllRoles(init?: init) {
     )
 }
 
-function getRolesPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: init) {
+function getRolesPerPage({ page = 1, id = "desc",  perPage = 7} = {}, init?: init) {
     return authenticatedFetch<getRolesResult>(appendParams(`${route}/page`,
         { page, id, perPage }),
         init

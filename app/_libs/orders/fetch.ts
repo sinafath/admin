@@ -11,7 +11,7 @@ function getAllOrders(init?: init) {
     )
 }
 
-function getOrdersPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: init) {
+function getOrdersPerPage({ page = 1, id = "desc",  perPage = 7} = {}, init?: init) {
     return authenticatedFetch<getOrdersResult>(appendParams(`${route}/page`,
         { page, id, perPage }),
         init

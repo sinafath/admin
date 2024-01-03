@@ -5,7 +5,7 @@ import errorHandler from "./errorHandler";
 
 const action = createSafeActionClient({
     handleReturnedServerError(e) {
-        console.log({ee: errorHandler(e)})
+        console.log({ee: e})
         return errorHandler(e)
     },
 	handleServerErrorLog: (e) => {

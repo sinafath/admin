@@ -9,9 +9,8 @@ import { Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 const route = "/orders"
 
 async function TableOrders({
-    searchParams,
+    searchParams: { id, page=1 }  = {},
 }: searchParams) {
-    const { page, id } = searchParams || {}
 
     const cols = ["نام", "شماره سفارش", "زمان رسیدن سفارش ", "عملیات ها"]
     const { data: { data: orders, meta: { total } } } = await getOrdersPerPage({ page: Number(page), id })

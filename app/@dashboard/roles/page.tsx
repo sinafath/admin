@@ -9,7 +9,7 @@ import { Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 const route = "/roles"
 
 async function TableRoles({
-    searchParams: { id, page } = {},
+    searchParams: { id, page = 1 } = {},
 }: searchParams) {
     const cols = ["اسم", "وصل شده", "عملیات ها"]
     const { data: { data: roles, meta: { total } } } = await getRolesPerPage({ page: Number(page), id })

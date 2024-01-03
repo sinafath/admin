@@ -5,7 +5,7 @@ import idType from "@/libs/types/idType";
 
 const route = "/api/v1/permission"
 
-function getPermissionsPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: init) {
+function getPermissionsPerPage({ page = 1, id = "desc",  perPage = 7} = {}, init?: init) {
     return authenticatedFetch<getPermissionsResult>(appendParams(`${route}/page`,
         { page, id, perPage }),
         init

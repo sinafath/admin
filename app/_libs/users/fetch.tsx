@@ -5,13 +5,13 @@ import idType from "@/libs/types/idType";
 
 
 const route = "/api/v1/user"
-function getUsersPerPage({ page = 1, id = "desc", perPage = 10 } = {}, init?: init) {
+function getUsersPerPage({ page = 1, id = "desc", perPage = 7 } = {}, init?: init) {
     return authenticatedFetch<getUsersResult>(appendParams(`${route}/page`,
         { page, id, perPage }),
         init
     )
 }
-function getAllUsers( init?: init) {
+function getAllUsers(init?: init) {
     return authenticatedFetch<getAllUsersResult>(route,
         init
     )
@@ -30,11 +30,11 @@ function deleteUserById({ id }: idType, init?: init) {
         },
     )
 }
-function editUserById({id,...props}: addUserByIdProps & idType, init?: init) {
+function editUserById({ id, ...props }: addUserByIdProps & idType, init?: init) {
     return authenticatedPatch(
         `${route}/${id} `,
         {
-            body:props,
+            body: props,
             notification: "نقش با موفقیت ویرایش شد",
             ...init
         },
@@ -53,4 +53,4 @@ function addUser(porps: addUserByIdProps, init?: init) {
     )
 }
 
-export { getUsersPerPage, deleteUserById, getUserById, editUserById ,addUser,getAllUsers}
+export { getUsersPerPage, deleteUserById, getUserById, editUserById, addUser, getAllUsers }

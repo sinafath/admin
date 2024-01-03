@@ -4,19 +4,19 @@ import SortSelect from "@/app/_components/Selects/SortSelect";
 import { Table, Thead, Button } from "@/app/_components/Table/Table";
 import { getProductsPerPage } from "@/app/_libs/products/fetch";
 import searchParams from "@/libs/types/searchParamsType";
-import { Flex, Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
+import {  Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 
 async function TableProducts({
-    searchParams:{ page, id }={},
+    searchParams: { id, page=1 }  = {  },
 }: searchParams) {
     const cols = ["اسم", "مدت ", "عملیات ها"]
-    const { data: { data: products, meta: { total } } } = await getProductsPerPage({ page: Number(page), id })
+    console.log({page})
+    const { data: { data: products, meta: { total } } } = await getProductsPerPage({ page: Number(page  ), id })
     return (
         <>
             <Group justify="space-between" mb={10}>
                 <Button href={"/add"} >اضافه کردن</Button>
                 <SortSelect />
-
             </Group>
             <Table >
                 <Thead >

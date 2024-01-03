@@ -9,16 +9,15 @@ import { Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 const route = "/permissions"
 
 async function TablePermissions({
-    searchParams,
+    searchParams: { id, page=1 } = {  },
 }: searchParams) {
-    const { page,id } = searchParams || {}
 
     const cols = ["اسم", "خوانده شده", "عملیات ها"]
-    const { data: { data: permissions, meta: { total } } } = await getPermissionsPerPage({ page: Number(page),id })
+    const { data: { data: permissions, meta: { total } } } = await getPermissionsPerPage({ page: Number(page), id })
     return (
         <>
             <Group justify="space-between" mb={10}>
-                <Button  href={`${route}/add`}  >اضافه کردن</Button>
+                <Button href={`${route}/add`}  >اضافه کردن</Button>
                 <SortSelect />
             </Group>
             <Table >

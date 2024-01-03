@@ -31,16 +31,17 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
           config.body = JSON.stringify(body)
      }
      return fetch(`${process.env.API_URL}${input}`, {
-          cache: "no-store",
           ...config
      })
           .then(async response => {
+
                const data = await response.json()
+               console.log({ url:`${process.env.API_URL}${input}`,config,data:data,mes:data?.errors?.message})
+
                if (response.ok) {
                     (config.method === "POST" || config.method === "DELETE" || config.method === "PATCH" || notification) && notificationHandler()
                     return data
                } else {
-                    console.log({ url:`${process.env.API_URL}${input}`,config,data:data})
                     return Promise.reject(new Error(data))
                }
           })

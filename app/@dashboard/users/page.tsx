@@ -8,7 +8,7 @@ import { TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 const route = "/users"
 
 async function TableUsers({
-    searchParams: { page, id } = {},
+    searchParams: { page = 1, id } = {},
 }: searchParams) {
     const cols = ["نام کاربری", "ایمیل", "عملیات ها"]
     const { data: { data: users, meta: { total } } } = await getUsersPerPage({ page: Number(page), id })

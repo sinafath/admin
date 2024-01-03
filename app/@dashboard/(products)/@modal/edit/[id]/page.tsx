@@ -18,7 +18,6 @@ async function EditProduct({
 }: editProductProps) {
   const [{ data: product }, { data: users }] = await Promise.all([getProductById({ id: Number(id) }), getAllUsers()])
   const { durationTime, name, userId } = product || {}
-  console.log(product)
   return (
     <Modal title="ویرایش محصول">
       <FormModal action={EditProductAction} initialValues={{

@@ -1,6 +1,6 @@
 type searchParams={
     searchParams?: {
-      page?: string;
+      page?: string | number;
       id?: string;
 
     };
