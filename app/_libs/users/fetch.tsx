@@ -7,7 +7,7 @@ import idType from "@/libs/types/idType";
 const route = "/api/v1/user"
 function getUsersPerPage({ page = 1, id = "desc", perPage = 7 } = {}, init?: init) {
     return authenticatedFetch<getUsersResult>(appendParams(`${route}/page`,
-        { page, id, perPage }),
+        { page, "orderBy[id]":id, perPage }),
         init
     )
 }

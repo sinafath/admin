@@ -1,15 +1,14 @@
 import Delete from "@/app/_components/Buttons/Cancel";
-import { FormModal } from "@/app/_components/Form/FormModal";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import { Group } from "@mantine/core";
-import { EditProductAction } from "@/app/_libs/products/actions";
 import { getProductById } from "@/app/_libs/products/fetch";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import DurationTimeInput from "@/app/_components/Form/Inputs/DurationTimeInput";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllUsers } from "@/app/_libs/users/fetch";
 import paramsIdType from "@/libs/types/paramsIdType";
+import EditProductForm from "./_Form";
 
 
 type editProductProps = paramsIdType
@@ -20,7 +19,7 @@ async function EditProduct({
   const { durationTime, name, userId } = product || {}
   return (
     <Modal title="ویرایش محصول">
-      <FormModal action={EditProductAction} initialValues={{
+      <EditProductForm initialValues={{
         durationTime: durationTime ?? undefined,
         name, userId, id: Number(id)
       }}>
@@ -32,7 +31,7 @@ async function EditProduct({
           <Submit mt={0} />
         </Group>
 
-      </FormModal>
+      </EditProductForm>
     </Modal>
 
   );

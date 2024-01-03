@@ -4,6 +4,6 @@ import { useFormContext } from "./Form";
 
 function TextInput({name,...props}:TextInputProps & {name:string}){
     const form = useFormContext();
-    return  <TextInputMantine size="md" name={name} mt={20} {...form.getInputProps(name)} {...props} />
+    return  <TextInputMantine size="md" name={name} mt="md" {...form.getInputProps(name)} {...props} />
 }
 export default TextInput

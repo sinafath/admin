@@ -7,7 +7,7 @@ const route = "/api/v1/permission"
 
 function getPermissionsPerPage({ page = 1, id = "desc",  perPage = 7} = {}, init?: init) {
     return authenticatedFetch<getPermissionsResult>(appendParams(`${route}/page`,
-        { page, id, perPage }),
+        { page, "orderBy[id]":id, perPage }),
         init
     )
 }

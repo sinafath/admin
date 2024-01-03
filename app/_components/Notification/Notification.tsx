@@ -1,15 +1,16 @@
 "use client"
+import getNotification from "@/libs/http/cookies/notification"
 import { Notifications, notifications } from "@mantine/notifications"
 import { useEffect } from "react"
-
 type NotificationProps = {
-    message?: string
+    notification?: ReturnType<typeof getNotification>
 }
-function Notification({ message }: NotificationProps) {
+function Notification({ notification: { message, type } = {} }: NotificationProps) {
     useEffect(() => {
         message && notifications.show({
             autoClose: 3000,
-            title: "موفق",
+            color: type === "error" ? "red" : "blue",
+            title: type === "error" ? "خطا" : "با موفقیت",
             message,
             withCloseButton: true
         })

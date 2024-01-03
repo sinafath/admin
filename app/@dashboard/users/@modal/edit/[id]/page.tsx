@@ -1,25 +1,27 @@
 import Delete from "@/app/_components/Buttons/Cancel";
-import { FormModal } from "@/app/_components/Form/FormModal";
+import { Form } from "@/app/_components/Form/Form";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import PasswordInput from "@/app/_components/Form/Inputs/PasswordInput";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
-import { EditUserAction } from "@/app/_libs/users/actions";
+import { editUserAction } from "@/app/_libs/users/actions";
 import { getUserById } from "@/app/_libs/users/fetch";
 import { Group } from "@mantine/core";
 import UsernameInput from "@/app/_components/Form/Inputs/UsernameInput";
 import EmailInput from "@/app/_components/Form/Inputs/EmailInput";
 import paramsIdType from "@/libs/types/paramsIdType";
+import { EditUserSchema } from "@/app/_libs/users/schema";
+import EditUserForm from "./_Form";
 
 
 type editUserProps = paramsIdType
 async function EditUser({
   params: { id } = {},
 }: editUserProps) {
-  const { data: { email, password, username }  } = await getUserById({ id: Number(id) })
+  const { data: { email, password, username } } = await getUserById({ id: Number(id) })
   return (
     <Modal title="ویرایش نام کاربری">
-      <FormModal action={EditUserAction} initialValues={{ email, password, username, id: Number(id) }}>
+      <EditUserForm initialValues={{ email, password, username, id: Number(id) }}>
         <UsernameInput />
         <EmailInput />
         <PasswordInput />
@@ -29,7 +31,7 @@ async function EditUser({
           <Submit mt={0} />
         </Group>
 
-      </FormModal>
+      </EditUserForm>
     </Modal>
 
   );

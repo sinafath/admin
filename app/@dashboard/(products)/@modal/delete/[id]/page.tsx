@@ -1,5 +1,5 @@
 import Delete from "@/app/_components/Buttons/Cancel";
-import { FormModal } from "@/app/_components/Form/FormModal";
+import { Form } from "@/app/_components/Form/Form";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
@@ -16,14 +16,14 @@ async function DeleteProduct({
   const { id } = params || {}
   return (
     <Modal title="حذف کاربر">
-      <FormModal action={DeleteroductAction} initialValues={{ id: Number(id) }}>
+      <Form routeBack action={DeleteroductAction} initialValues={{ id: Number(id) }}>
         <HiddenIdInput />
         <Group grow justify="center">
           <Delete />
           <Submit mt={0} />
         </Group>
 
-      </FormModal>
+      </Form>
     </Modal>
 
   );

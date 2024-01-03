@@ -6,7 +6,7 @@ import action from "@/libs/http/safeAction/safeAction"
 import HasIDSchema from "@/libs/Zod/schema/IDSchema"
 
 
-export const EditRoleAction = action(EditRoleSchema, async function (props) {
+export const editRoleAction = action(EditRoleSchema, async function (props) {
     const data = await editRoleById(props)
     return data
 }

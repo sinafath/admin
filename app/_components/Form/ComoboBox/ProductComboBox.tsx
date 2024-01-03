@@ -51,7 +51,8 @@ export function ProductComboBox({data}:ProductComboBoxProps) {
                 <InputBase
                     rightSection={<Combobox.Chevron />}
                     name='productId'
-                    size='md'
+                    size={'md'}
+                    pt={"md"}
                     label="محصول"
                     placeholder="جستجوی محصول"
                     value={search}

@@ -1,11 +1,10 @@
-
-import { StoryWrapper } from '@/libs/storybook/StoryWrapper/StoryWrapper';
-import { Table } from '../../../app/@dashboard/(products)/_ui/Table';
-import attributes from '../../../app/@dashboard/(products)/Table/attributes.json';
-
-export default { title: 'Table' };
+// import { Table } from "@/app/_components/Table/Table";
+// import { StoryWrapper } from "../StoryWrapper/StoryWrapper";
 
 
-export function Usage() {
-  return <StoryWrapper attributes={attributes} component={Table} />;
-}
+// export default { title: 'Table' };
+
+
+// export function Usage() {
+//   return <StoryWrapper attributes={attributes} component={Table} />;
+// }

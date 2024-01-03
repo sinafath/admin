@@ -9,6 +9,7 @@ import Button from '../_components/Form/Submit';
 import PasswordInput from '../_components/Form/Inputs/PasswordInput';
 import { Form } from '../_components/Form/Form';
 import EmailInput from '../_components/Form/Inputs/EmailInput';
+import { LoginSchema } from '../_libs/auth/schema';
 
 
 
@@ -19,7 +20,7 @@ function AuthenticationImage() {
                 <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
                     به پنل ادمین خوش آمدید
                 </Title>
-                <Form action={login}>
+                <Form action={login} schema={LoginSchema}>
                     <EmailInput />
                     <PasswordInput/>
                     <Button>

@@ -10,7 +10,7 @@ import action from '@/libs/http/safeAction/safeAction';
 
 export async function logoutAction(){
     deleteAccessToken()
-    setNotification("عملیات خروج با موفقیت انجام شد")
+    setNotification({message:"عملیات خروج با موفقیت انجام شد",type:"success"})
 }
 
 export const login = action(LoginSchema, async function (props) {

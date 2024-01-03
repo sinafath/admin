@@ -53,6 +53,7 @@ export function UserComboBox({data}:UserComboBoxProps) {
                     name='userId'
                     size='md'
                     label="کاربر"
+                    pt={"md"}
                     placeholder="جستجوی کاربر"
                     value={search}
                     onChange={(event) => {

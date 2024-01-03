@@ -12,7 +12,7 @@ function getAllProducts(init?: init) {
 
 function getProductsPerPage({ page = 1, id = "desc", perPage = 7 } = {}, init?: init) {
     return authenticatedFetch<GetProductsResult>(appendParams(`${route}/page`,
-        { page, id, perPage }),
+        { page, "orderBy[id]":id, perPage }),
         init
     )
 }

@@ -5,6 +5,6 @@ import Notification from './Notification';
 export default function ServerNotification() {
     const notification = getNotification()
     return (
-        <Notification message={notification?.value} />
+        <Notification notification={notification} />
     );
 }

@@ -1,15 +1,15 @@
 import { createSafeActionClient } from "next-safe-action";
-import errorHandler from "./errorHandler";
 
 
 
 const action = createSafeActionClient({
     handleReturnedServerError(e) {
-        console.log({ee: e})
-        return errorHandler(e)
+
+        return { serverError: e.message }
     },
-	handleServerErrorLog: (e) => {
-		console.error("CUSTOM ERROR LOG FUNCTION:", e);
-	},
+    handleServerErrorLog: (e) => {
+        console.error("CUSTOM ERROR LOG FUNCTION:", e);
+    },
 });
+
 export default action 

@@ -48,6 +48,8 @@ export function RoleSelectComboBox({data}:UserComboBoxProps) {
                     rightSection={<Combobox.Chevron />}
                     name='roleId'
                     size='md'
+                    pt={"md"}
+
                     label="نقش"
                     placeholder="جستجوی نقش"
                     value={search}

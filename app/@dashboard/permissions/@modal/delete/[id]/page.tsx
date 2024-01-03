@@ -1,5 +1,5 @@
 import Delete from "@/app/_components/Buttons/Cancel";
-import { FormModal } from "@/app/_components/Form/FormModal";
+import { Form } from "@/app/_components/Form/Form";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import {  Group } from "@mantine/core";
@@ -14,14 +14,14 @@ async function DeletePermission({
 }: DeletePermissionProps) {
   return (
     <Modal title="حذف دسترسی">
-      <FormModal action={DeletePermissionAction} initialValues={{ id: Number(id) }}>
+      <Form routeBack action={DeletePermissionAction}   initialValues={{ id: Number(id) }}>
         <HiddenIdInput />
         <Group grow justify="center">
           <Delete />
           <Submit mt={0} />
         </Group>
 
-      </FormModal>
+      </Form>
     </Modal>
 
   );

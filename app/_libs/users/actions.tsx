@@ -7,7 +7,7 @@ import { deleteActionProps } from "./types"
 import HasIDSchema from "@/libs/Zod/schema/IDSchema"
 
 
-export const EditUserAction = action(EditUserSchema, async function (props) {
+export const editUserAction = action(EditUserSchema, async function (props) {
     const data = await editUserById(props)
     return data
 }

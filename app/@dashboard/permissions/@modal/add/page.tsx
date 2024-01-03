@@ -1,5 +1,5 @@
 import Delete from "@/app/_components/Buttons/Cancel";
-import { FormModal } from "@/app/_components/Form/FormModal";
+import { Form } from "@/app/_components/Form/Form";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import { Group } from "@mantine/core";
@@ -10,12 +10,14 @@ import { getAllRoles } from "@/app/_libs/roles/fetch";
 import { RouteComboBox } from "@/app/_components/Form/ComoboBox/RouteComboBox";
 import getAllRoutes from "@/app/_libs/routes/fetch";
 import ReadInput from "@/app/_components/Form/Inputs/ReadInput";
+import AddPermissionForm from "./_Form";
+
 
 async function addPermission() {
   const [{ data: roles }, { data: routes }] = await Promise.all([getAllRoles(), getAllRoutes()])
   return (
     <Modal title="اضافه کردن دسترسی">
-      <FormModal action={addPermissionAction} >
+      <AddPermissionForm>
         <RoleSelectComboBox data={roles} />
         <RouteComboBox data={routes} />
         <NameInput />
@@ -24,7 +26,7 @@ async function addPermission() {
           <Delete />
           <Submit mt={0} />
         </Group>
-      </FormModal>
+      </AddPermissionForm>
     </Modal>
 
   );

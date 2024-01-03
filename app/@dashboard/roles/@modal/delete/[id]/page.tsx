@@ -1,5 +1,5 @@
 import Delete from "@/app/_components/Buttons/Cancel";
-import { FormModal } from "@/app/_components/Form/FormModal";
+import { Form } from "@/app/_components/Form/Form";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import { DeleteRoleAction } from "@/app/_libs/roles/actions";
@@ -15,14 +15,14 @@ async function DeleteRole({
 }:  DeleteRoleProps) {
   return (
     <Modal title="حذف نقش">
-      <FormModal action={DeleteRoleAction} initialValues={{ id: Number(id) }}>
+      <Form routeBack action={DeleteRoleAction} initialValues={{ id: Number(id) }}>
         <HiddenIdInput />
         <Group grow justify="center">
           <Delete />
           <Submit mt={0} />
         </Group>
 
-      </FormModal>
+      </Form>
     </Modal>
 
   );

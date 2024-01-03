@@ -4,14 +4,14 @@ import SortSelect from "@/app/_components/Selects/SortSelect";
 import { Table, Thead, Button } from "@/app/_components/Table/Table";
 import { getProductsPerPage } from "@/app/_libs/products/fetch";
 import searchParams from "@/libs/types/searchParamsType";
-import {  Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
+import { Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 
 async function TableProducts({
-    searchParams: { id, page=1 }  = {  },
+    searchParams: { id, page = 1 } = {},
 }: searchParams) {
     const cols = ["اسم", "مدت ", "عملیات ها"]
-    console.log({page})
-    const { data: { data: products, meta: { total } } } = await getProductsPerPage({ page: Number(page  ), id })
+    console.log({ page })
+    const { data: { data: products, meta: {lastPage} } } = await getProductsPerPage({ page: Number(page), id })
     return (
         <>
             <Group justify="space-between" mb={10}>
@@ -39,7 +39,7 @@ async function TableProducts({
                     </TableTr>
                 ))}</TableTbody>
             </Table>
-            <Pagination total={total} />
+            <Pagination total={lastPage} />
         </>
     )
 }

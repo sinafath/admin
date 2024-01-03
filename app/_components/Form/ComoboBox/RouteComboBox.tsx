@@ -62,8 +62,7 @@ export function RouteComboBox({ data }: RouteComboBoxProps) {
         <PillsInput
           label="مسیر ها"
           size='md'
-          mt={15}
-
+          pt={"md"}
           {...props}
           onClick={() => combobox.openDropdown()}>
           <Pill.Group>

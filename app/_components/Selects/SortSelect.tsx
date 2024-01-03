@@ -5,7 +5,7 @@ import { useTransition } from "react";
 
 function SortSelect(props: SelectProps) {
     const searchParams = useSearchParams()
-    const data = [' به کوچک', ' به بزرگ']
+    const data = ['نزولی', 'صعودی']
     const sortUrl = searchParams.get('id')
     const { replace } = useRouter();
     const pathname = usePathname();
@@ -23,7 +23,7 @@ function SortSelect(props: SelectProps) {
     }
     return <Select
         label="ترتیب"
-        defaultValue={sortUrl ?? data[0]}
+        defaultValue={sortUrl ? data[1] : data[0]}
         w={160}
         data={data}
         onSearchChange={handleSort}

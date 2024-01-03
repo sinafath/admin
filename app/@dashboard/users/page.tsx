@@ -11,7 +11,7 @@ async function TableUsers({
     searchParams: { page = 1, id } = {},
 }: searchParams) {
     const cols = ["نام کاربری", "ایمیل", "عملیات ها"]
-    const { data: { data: users, meta: { total } } } = await getUsersPerPage({ page: Number(page), id })
+    const { data: { data: users, meta: { lastPage } } } = await getUsersPerPage({ page: Number(page), id })
     return (
         <>
             <Button href={`${route}/add`} >اضافه کردن</Button>
@@ -36,7 +36,7 @@ async function TableUsers({
                     </TableTr>
                 ))}</TableTbody>
             </Table>
-            <Pagination total={total} />
+            <Pagination total={lastPage} />
         </>
     )
 }

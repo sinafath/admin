@@ -22,7 +22,7 @@ function Pagination(props: PaginationProps) {
         startTransition(() => {
             replace(`${pathname}?${params.toString()}`);
         });
-    },300)
+    },200)
 
     return <Center w={"100%"} >
         <MantinePagination mb={"md"} defaultValue={Number(pageUrl ?? 1) } mt="md" mx={"auto"}  {...props} onChange={handlePagination} />

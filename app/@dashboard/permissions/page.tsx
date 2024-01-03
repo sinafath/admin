@@ -13,7 +13,8 @@ async function TablePermissions({
 }: searchParams) {
 
     const cols = ["اسم", "خوانده شده", "عملیات ها"]
-    const { data: { data: permissions, meta: { total } } } = await getPermissionsPerPage({ page: Number(page), id })
+    const { data: { data: permissions, meta: { lastPage } } } = await getPermissionsPerPage({ page: Number(page), id })
+    console.log({lastPage})
     return (
         <>
             <Group justify="space-between" mb={10}>
@@ -35,13 +36,13 @@ async function TablePermissions({
                         <TableTd >
                             <ButtonGroup>
                                 <Delete href={`${route}/delete/${id}`} />
-                                <Edit href={`${route}/edit/${id}`} />
+                                {/* <Edit href={`${route}/edit/${id}`} /> */}
                             </ButtonGroup>
                         </TableTd>
                     </TableTr>
                 ))}</TableTbody>
             </Table>
-            <Pagination total={total} />
+            <Pagination total={lastPage} />
 
         </>
     )

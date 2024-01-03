@@ -7,11 +7,15 @@ type init = Omit<RequestInit, "body"> & {
 type input = URL | RequestInfo
 async function authenticatedFetch<data = {}>(input: input, init?: init): Promise<data> {
      const { body, notification, ...customConfig } = init || {}
-     function notificationHandler() {
+     function notificationHandler(type: "error" | "success" = "success", message?: string) {
           if (notification === false) return
-          if (typeof notification === "string") return setNotification(notification)
-          setNotification("عملیات باموفقیت انجام شد")
+          if (typeof notification === "string") {
+               return setNotification({ type, message: notification });
+          }
+          if (config.method && ["POST", "DELETE", "PATCH"].includes(config.method)) {
+               return setNotification({ type, message: "عملیات با موفقیت انجام شد" });
 
+          }
      }
      const token = getAccessToken()
      const customHeaders = "headers" in customConfig ? customConfig.headers : {}
@@ -34,15 +38,26 @@ async function authenticatedFetch<data = {}>(input: input, init?: init): Promise
           ...config
      })
           .then(async response => {
-
                const data = await response.json()
-               console.log({ url:`${process.env.API_URL}${input}`,config,data:data,mes:data?.errors?.message})
+               console.log({ url: `${process.env.API_URL}${input}`, config, data: data, mes: data?.errors?.message, notification })
 
                if (response.ok) {
-                    (config.method === "POST" || config.method === "DELETE" || config.method === "PATCH" || notification) && notificationHandler()
+                    notificationHandler()
                     return data
                } else {
-                    return Promise.reject(new Error(data))
+                    if (Array.isArray(data?.errors?.message)) {
+                         const message = data.errors.message?.[0] ?? "خطا سرور"
+                         setNotification({
+                              type: "error", message
+                         })
+                         return Promise.reject(new Error(message))
+
+                    }
+                    const message = data?.errors?.message ?? "خطا سرور"
+                    setNotification({
+                         type: "error", message
+                    })
+                    return Promise.reject(new Error(message))
                }
           })
 }

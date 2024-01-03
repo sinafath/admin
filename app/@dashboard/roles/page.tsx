@@ -12,7 +12,7 @@ async function TableRoles({
     searchParams: { id, page = 1 } = {},
 }: searchParams) {
     const cols = ["اسم", "وصل شده", "عملیات ها"]
-    const { data: { data: roles, meta: { total } } } = await getRolesPerPage({ page: Number(page), id })
+    const { data: { data: roles, meta: { lastPage } } } = await getRolesPerPage({ page: Number(page), id })
     return (
         <>
             <Group justify="space-between" mb={10}>
@@ -41,7 +41,7 @@ async function TableRoles({
                     </TableTr>
                 ))}</TableTbody>
             </Table>
-            <Pagination total={total} />
+            <Pagination total={lastPage} />
         </>
     )
 }

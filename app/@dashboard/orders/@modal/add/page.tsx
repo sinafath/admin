@@ -1,14 +1,13 @@
 import Delete from "@/app/_components/Buttons/Cancel";
-import { FormModal } from "@/app/_components/Form/FormModal";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import { getAllUsers } from "@/app/_libs/users/fetch";
 import { Group } from "@mantine/core";
-import { AddOrderAction } from "@/app/_libs/orders/actions";
 import { ProductComboBox } from "@/app/_components/Form/ComoboBox/ProductComboBox";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllProducts } from "@/app/_libs/products/fetch";
+import AddOrderForm from "./_Form";
 
 
 async function AddOrder() {
@@ -16,7 +15,7 @@ async function AddOrder() {
     .all([getAllProducts(), getAllUsers()])
   return (
     <Modal title="اضافه کردن سفارش">
-      <FormModal action={AddOrderAction}>
+      <AddOrderForm >
         <UserComboBox data={users} />
         <ProductComboBox data={products} />
         <HiddenIdInput />
@@ -25,7 +24,7 @@ async function AddOrder() {
           <Submit mt={0} />
         </Group>
 
-      </FormModal>
+      </AddOrderForm>
     </Modal>
 
   );
