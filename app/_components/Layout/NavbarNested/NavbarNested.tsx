@@ -19,7 +19,7 @@ const mockdata = [
     links: [
       { label: 'نقش ها', link: '/roles' },
       { label: 'کاربران', link: '/users' },
-      { label: 'دسترسسی ها', link: '/permissions' }
+      { label: 'دسترسی ها', link: '/permissions' }
     ],
   }
 
