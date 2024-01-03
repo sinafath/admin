@@ -1,6 +1,5 @@
 import HasEmail from "@/libs/Zod/schema/EmailSchema";
 import HasIDSchema from "@/libs/Zod/schema/IDSchema";
-import HasPassword from "@/libs/Zod/schema/PasswordSChema";
 import PasswordStrictSchema from "@/libs/Zod/schema/PasswordStrictSchema";
 import { z } from "zod";
 

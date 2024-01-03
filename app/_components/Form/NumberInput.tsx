@@ -1,6 +1,5 @@
 "use client"
 import { ComponentProps } from "react";
-import TextInput from "./TextInput";
 import { NumberInput as MantineNumberInput } from "@mantine/core";
 import { useFormContext } from "./Form";
 
