@@ -1,9 +1,10 @@
 "use client"
 
 import cx from 'clsx';
-import { Table as MantineTable, TableProps,  TableThead, TableTheadProps } from '@mantine/core';
+import { Table as MantineTable, ScrollArea, TableProps,  TableThead, TableTheadProps } from '@mantine/core';
 import classes from './Table.module.css';
 import Button from './Button';
+import { useState } from 'react';
 
 
 // type TableProps<col extends string> = {
@@ -36,6 +37,8 @@ import Button from './Button';
 // }
 
 const Thead = (props: TableTheadProps) => <TableThead className={cx(classes.header)} {...props} />
-const Table = (props: TableProps) => <MantineTable miw={700} verticalSpacing="sm" withTableBorder striped  {...props} />
-
+const Table = (props: TableProps) =>     {
+return <ScrollArea h={420} ><MantineTable miw={700} verticalSpacing="sm" withTableBorder striped  {...props} />
+</ScrollArea>
+}
 export { Thead, Table ,Button}
