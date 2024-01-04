@@ -34,7 +34,7 @@ async function TableUsers({
                         <TableTd >
                             <ButtonGroup>
                                 <Delete href={`${route}/delete/${id}`} />
-                                <Edit href={`${route}/edit/${id}`} />
+                                {/* <Edit href={`${route}/edit/${id}`} /> */}
                             </ButtonGroup>
                         </TableTd>
                     </TableTr>
