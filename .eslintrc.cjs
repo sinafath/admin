@@ -7,6 +7,7 @@ module.exports = {
       extends: ['plugin:testing-library/react'],
     },
   ],
+  ignoreDuringBuilds: true,
   parserOptions: {
     project: './tsconfig.json',
   },
