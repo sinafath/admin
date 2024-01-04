@@ -21,7 +21,6 @@ async function DeleteUser({
           <Delete />
           <Submit mt={0} />
         </Group>
-
       </Form>
     </Modal>
 

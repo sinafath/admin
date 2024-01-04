@@ -1,9 +1,10 @@
 import { Edit, Delete, ButtonGroup } from "@/app/_components/Buttons";
 import Pagination from "@/app/_components/Pagination/Pagination";
+import SortSelect from "@/app/_components/Selects/SortSelect";
 import { Table, Thead, Button } from "@/app/_components/Table/Table";
 import { getUsersPerPage } from "@/app/_libs/users/fetch";
 import searchParams from "@/libs/types/searchParamsType";
-import { TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
+import { Group, TableTbody, TableTd, TableTh, TableTr } from "@mantine/core";
 
 const route = "/users"
 
@@ -14,7 +15,10 @@ async function TableUsers({
     const { data: { data: users, meta: { lastPage } } } = await getUsersPerPage({ page: Number(page), id })
     return (
         <>
-            <Button href={`${route}/add`} >اضافه کردن</Button>
+              <Group justify="space-between" mb={10}>
+                <Button href={`${route}/add`}  >اضافه کردن</Button>
+                <SortSelect />
+            </Group>
             <Table >
                 <Thead >
                     <TableTr>
