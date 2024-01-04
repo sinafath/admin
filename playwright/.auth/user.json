@@ -1,0 +1,25 @@
+{
+  "cookies": [
+    {
+      "name": "access_token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJyb2xlIjoxLCJwZXJtaXNzaW9ucyI6WzFdLCJpYXQiOjE3MDQzMzg2MjMsImV4cCI6MTcwNDQyNTAyM30.8CZQD1UJFrehLQ4Np_wrn-Q8e_aq5uBZfRh3sbLimNQ",
+      "domain": "license-market.liara.run",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "notification",
+      "value": "%7B%22type%22%3A%22success%22%2C%22message%22%3A%22%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%20%D8%A8%D8%A7%20%D9%85%D9%88%D9%81%D9%82%DB%8C%D8%AA%20%D9%88%D8%A7%D8%B1%D8%AF%20%D8%B4%D8%AF%22%7D",
+      "domain": "license-market.liara.run",
+      "path": "/",
+      "expires": 1704338625.39645,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": []
+}
