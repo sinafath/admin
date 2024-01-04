@@ -5,7 +5,7 @@ import { LoginSchema } from './schema';
 import { setAccessToken } from '@/libs/http/cookies/accessToken';
 import { setNotification } from '@/libs/http/cookies/notification';
 import { deleteAccessToken } from '@/libs/http/cookies/accessToken';
-import action from '@/libs/http/safeAction/safeAction';
+import action from '@/libs/safeAction/safeAction';
 ;
 
 export async function logoutAction(){

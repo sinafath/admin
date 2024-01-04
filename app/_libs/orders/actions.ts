@@ -2,7 +2,7 @@
 
 import { addOrder, deleteOrderById, editOrderById } from "./fetch"
 import { EditOrderSchema ,AddOrderSchema} from "./schema"
-import action from "@/libs/http/safeAction/safeAction"
+import action from "@/libs/safeAction/safeAction"
 import HasIDSchema from "@/libs/Zod/schema/IDSchema"
 
 

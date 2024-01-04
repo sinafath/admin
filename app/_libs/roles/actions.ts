@@ -2,7 +2,7 @@
 
 import { addRole, deleteRoleById, editRoleById } from "./fetch"
 import { EditRoleSchema ,AddRoleSchema} from "./schema"
-import action from "@/libs/http/safeAction/safeAction"
+import action from "@/libs/safeAction/safeAction"
 import HasIDSchema from "@/libs/Zod/schema/IDSchema"
 
 

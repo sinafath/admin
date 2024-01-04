@@ -2,7 +2,7 @@
 
 import { addUser, deleteUserById, editUserById } from "./fetch"
 import { EditUserSchema ,AddUserSchema} from "./schema"
-import action from "@/libs/http/safeAction/safeAction"
+import action from "@/libs/safeAction/safeAction"
 import { deleteActionProps } from "./types"
 import HasIDSchema from "@/libs/Zod/schema/IDSchema"
 
