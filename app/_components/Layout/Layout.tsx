@@ -19,7 +19,7 @@ function Layout({ children }: LayoutProps) {
             <AppShell.Header>
                 <Group h="100%" px="md">
                     <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                    <IconBrandMantine  size={30} />
+                    <IconBrandMantine       color="var(--mantine-color-blue-filled)" size={50} />
                 </Group>
             </AppShell.Header>
             <NavbarNested />

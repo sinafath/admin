@@ -4,12 +4,12 @@ import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import { editRoleAction } from "@/app/_libs/roles/actions";
-import { getRoleById } from "@/app/_libs/roles/fetch";
 import { Group } from "@mantine/core";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import paramsIdType from "@/libs/types/paramsIdType";
 import { EditRoleSchema } from "@/app/_libs/roles/schema";
-import EditRoleForm from "./_Form";
+import { EditRoleForm } from "@/app/_libs/roles/Forms";
+import { getRoleById } from "@/app/_libs/roles/fetch";
 
 
 type editRoleProps = paramsIdType

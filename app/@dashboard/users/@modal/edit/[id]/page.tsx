@@ -1,17 +1,15 @@
 import Delete from "@/app/_components/Buttons/Cancel";
-import { Form } from "@/app/_components/Form/Form";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import PasswordInput from "@/app/_components/Form/Inputs/PasswordInput";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
-import { editUserAction } from "@/app/_libs/users/actions";
 import { getUserById } from "@/app/_libs/users/fetch";
 import { Group } from "@mantine/core";
 import UsernameInput from "@/app/_components/Form/Inputs/UsernameInput";
 import EmailInput from "@/app/_components/Form/Inputs/EmailInput";
 import paramsIdType from "@/libs/types/paramsIdType";
-import { EditUserSchema } from "@/app/_libs/users/schema";
-import EditUserForm from "./_Form";
+import { EditUserForm } from "@/app/_libs/users/Forms";
+
 
 
 type editUserProps = paramsIdType

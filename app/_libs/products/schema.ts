@@ -11,5 +11,4 @@ const ProductSchema = z.object({
 const EditProductSchema = ProductSchema.merge(HasIDSchema)
 const AddProductSchema = ProductSchema
 
-
 export { EditProductSchema ,AddProductSchema}

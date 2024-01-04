@@ -2,7 +2,6 @@ import Delete from "@/app/_components/Buttons/Cancel";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
-import { getAllRoles } from "@/app/_libs/roles/fetch";
 import { Group } from "@mantine/core";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import { getPermissionById } from "@/app/_libs/permissions/fetch";
@@ -11,7 +10,8 @@ import { RoleSelectComboBox } from "@/app/_components/Form/ComoboBox/RoleSelectC
 import getAllRoutes from "@/app/_libs/routes/fetch";
 import { RouteComboBox } from "@/app/_components/Form/ComoboBox/RouteComboBox";
 import ReadInput from "@/app/_components/Form/Inputs/ReadInput";
-import EditPermissionForm from "./_Form";
+import { EditPermissionForm } from "@/app/_libs/permissions/Forms";
+import { getAllRoles } from "@/app/_libs/roles/fetch";
 
 
 type EditPermissionsProps = paramsIdType

@@ -1,6 +1,6 @@
 import appendParams from "@/libs/http/searchParams/appendParams";
 import authenticatedFetch, { authenticatedDelete, authenticatedPatch, authenticatedPost, init } from "@/libs/http/fetch/fetch";
-import { GetAllProductsResult,  GetProductByIdResult, GetProductsResult, addProductProps, editProductByIdProps } from "./types";
+import { GetAllProductsResult,  GetProductByIdResult, GetProductsPageResult, addProductProps, editProductByIdProps } from "./types";
 import idType from "@/libs/types/idType";
 
 const route = "/api/v1/product"
@@ -11,7 +11,7 @@ function getAllProducts(init?: init) {
 }
 
 function getProductsPerPage({ page = 1, id = "desc", perPage = 7 } = {}, init?: init) {
-    return authenticatedFetch<GetProductsResult>(appendParams(`${route}/page`,
+    return authenticatedFetch<GetProductsPageResult>(appendParams(`${route}/page`,
         { page, "orderBy[id]":id, perPage }),
         init
     )

@@ -6,7 +6,7 @@ import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import DurationTimeInput from "@/app/_components/Form/Inputs/DurationTimeInput";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllUsers } from "@/app/_libs/users/fetch";
-import AddProductForm from "./_Form";
+import { AddProductForm } from "@/app/_libs/products/Forms";
 
 async function AddProduct() {
   const { data: users } = await getAllUsers()

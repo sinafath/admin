@@ -5,11 +5,11 @@ import Modal from "@/app/_components/Modal/Modal";
 import { getAllUsers } from "@/app/_libs/users/fetch";
 import { Group } from "@mantine/core";
 import paramsIdType from "@/libs/types/paramsIdType";
-import { getOrderById } from "@/app/_libs/orders/fetch";
 import { ProductComboBox } from "@/app/_components/Form/ComoboBox/ProductComboBox";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllProducts } from "@/app/_libs/products/fetch";
-import EditOrderForm from "./_Form";
+import { getOrderById } from "@/app/_libs/orders/fetch";
+import { EditOrderForm } from "@/app/_libs/orders/Forms";
 
 
 type EditOrderProps = paramsIdType

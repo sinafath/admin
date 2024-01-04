@@ -1,18 +1,18 @@
 import appendParams from "@/libs/http/searchParams/appendParams";
 import authenticatedFetch, { authenticatedDelete, authenticatedPatch, authenticatedPost, init } from "@/libs/http/fetch/fetch";
-import { addPermissionProps, getPermissionsResult, getPermissionByIdResult } from "./types";
+import { addPermissionProps, getPermissionsPageResult, getPermissionByIdResult } from "./types";
 import idType from "@/libs/types/idType";
 
 const route = "/api/v1/permission"
 
 function getPermissionsPerPage({ page = 1, id = "desc",  perPage = 7} = {}, init?: init) {
-    return authenticatedFetch<getPermissionsResult>(appendParams(`${route}/page`,
+    return authenticatedFetch<getPermissionsPageResult>(appendParams(`${route}/page`,
         { page, "orderBy[id]":id, perPage }),
         init
     )
 }
 function getAllPermissions( init?: init) {
-    return authenticatedFetch<getPermissionsResult>(route,
+    return authenticatedFetch<getPermissionsPageResult>(route,
         init
     )
 }

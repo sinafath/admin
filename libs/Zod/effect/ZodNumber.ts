@@ -5,6 +5,6 @@ function ZodNumber(name:string){
     .number({
         required_error: `${name} را وارد کنید`,
         invalid_type_error: "عدد وارد کنید",
-      }).min(1, { message: `${name} را وارد کنید`})
+      })
 }
 export default ZodNumber

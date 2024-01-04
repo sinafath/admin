@@ -14,6 +14,6 @@ type productType = {
 
 type GetProductByIdResult = responseSuccessType<productType>
 type GetAllProductsResult =  responseSuccessType<productType[]>
-type GetProductsResult =  responseSuccessPagination<productType[]>
+type GetProductsPageResult =  responseSuccessPagination<productType[]>
 
-export type { addProductProps, GetProductByIdResult, GetProductsResult,editProductByIdProps,GetAllProductsResult ,productType}
+export type { addProductProps, GetProductByIdResult, GetProductsPageResult,editProductByIdProps,GetAllProductsResult ,productType}

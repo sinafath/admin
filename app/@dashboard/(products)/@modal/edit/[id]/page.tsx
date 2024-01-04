@@ -8,7 +8,7 @@ import DurationTimeInput from "@/app/_components/Form/Inputs/DurationTimeInput";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllUsers } from "@/app/_libs/users/fetch";
 import paramsIdType from "@/libs/types/paramsIdType";
-import EditProductForm from "./_Form";
+import { EditProductForm } from "@/app/_libs/products/Forms";
 
 
 type editProductProps = paramsIdType

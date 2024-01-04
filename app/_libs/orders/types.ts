@@ -18,6 +18,6 @@ type orderType = {
 }
 type getOrderByIdResult = responseSuccessType<orderType>
 type getAllOrdersResult = responseSuccessType<orderType[]>
-type getOrdersResult = responseSuccessPagination<orderType[]>
+type getOrdersPageResult = responseSuccessPagination<orderType[]>
 
-export type { editOrderByIdProps, addOrderByIdProps,getOrderByIdResult, getOrdersResult, orderType, getAllOrdersResult }
+export type { editOrderByIdProps, addOrderByIdProps,getOrderByIdResult, getOrdersPageResult, orderType, getAllOrdersResult }

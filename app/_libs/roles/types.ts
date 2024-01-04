@@ -17,6 +17,6 @@ type roleType = {
   }
   type  getRoleByIdResult = responseSuccessType<roleType>
   type getAllRolesResult = responseSuccessType<roleType[]>
-  type getRolesResult = responseSuccessPagination<roleType[]>
+  type getRolesPageResult = responseSuccessPagination<roleType[]>
 
-  export type {editRoleByIdProps,getRoleByIdResult,getRolesResult,roleType,getAllRolesResult}
+  export type {editRoleByIdProps,getRoleByIdResult,getRolesPageResult,roleType,getAllRolesResult}

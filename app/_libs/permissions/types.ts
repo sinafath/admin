@@ -14,6 +14,6 @@ type permissionType =   {
 }
 type getPermissionByIdResult = responseSuccessType<permissionType>
 type getAllPermissionResult = responseSuccessType<permissionType[]>
-type getPermissionsResult = responseSuccessPagination<permissionType[]>
+type getPermissionsPageResult = responseSuccessPagination<permissionType[]>
 
-export type { addPermissionProps, getPermissionByIdResult, getPermissionsResult,getAllPermissionResult, permissionType }
+export type { addPermissionProps, getPermissionByIdResult, getPermissionsPageResult,getAllPermissionResult, permissionType }

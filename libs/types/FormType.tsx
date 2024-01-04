@@ -1,5 +1,9 @@
-import { FormProps } from "@/app/_components/Form/Form"
-import { SafeAction as NextSafeAction } from "next-safe-action/."
-import { ZodTypeAny } from "zod"
-type FormType<schema extends ZodTypeAny, safeActions extends NextSafeAction<schema,{}> > = Omit<FormProps< schema, Awaited<ReturnType<safeActions> >["data"]>, "schema" | "action">
+import { BoxProps } from "@mantine/core"
+import { PropsWithChildren } from "react"
+import { Schema, ZodTypeAny, z } from "zod"
+type FormType<schema extends ZodTypeAny >  = PropsWithChildren<{
+    initialValues?: Partial<z.TypeOf<schema>>
+    schema?: schema
+    routeBack?: boolean
+}> & BoxProps
 export type {FormType}
