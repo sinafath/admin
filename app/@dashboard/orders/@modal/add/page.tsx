@@ -7,7 +7,7 @@ import { Group } from "@mantine/core";
 import { ProductComboBox } from "@/app/_components/Form/ComoboBox/ProductComboBox";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllProducts } from "@/app/_libs/products/fetch";
-import { AddOrderForm } from "@/app/_libs/orders/Forms";
+import { AddOrderForm } from "@/app/_components/Form/Form/Forms";
 
 
 async function AddOrder() {

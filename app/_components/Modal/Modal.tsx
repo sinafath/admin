@@ -1,8 +1,6 @@
 "use client"
-import { Box, Modal as MantineModal, BoxProps as MantineBoxProps } from "@mantine/core";
-
+import { Box, BoxProps as MantineBoxProps } from "@mantine/core";
 import classes from './Modal.module.css';
-import { IconCross, IconX } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { PropsWithChildren } from "react";
 

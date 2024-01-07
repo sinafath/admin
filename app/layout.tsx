@@ -8,7 +8,7 @@ import { MantineProvider, ColorSchemeScript, DirectionProvider } from '@mantine/
 import { theme } from '../theme';
 import getAccessToken from '@/libs/http/cookies/accessToken';
 import YekanBakhFaNumReg from '../libs/assets/font/font';
-import ServerNotification from './_components/Notification/ServerNotification';
+import ServerNotification from './ServerNotification';
 
 export const metadata = {
   title: 'Dashboaard',
