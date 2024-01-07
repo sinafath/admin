@@ -3,7 +3,7 @@ import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import { Group } from "@mantine/core";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
-import { AddRoleForm } from "@/app/_libs/roles/Forms";
+import { AddRoleForm } from "@/app/_components/Form/Forms/RoleForms";
 
 async function addRole() {
   return (

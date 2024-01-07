@@ -5,7 +5,7 @@ import Modal from "@/app/_components/Modal/Modal";
 import { Group } from "@mantine/core";
 import UsernameInput from "@/app/_components/Form/Inputs/UsernameInput";
 import EmailInput from "@/app/_components/Form/Inputs/EmailInput";
-import { AddUserForm } from "@/app/_libs/users/Forms";
+import { AddUserForm } from "@/app/_components/Form/Forms/UserForms";
 
 
 async function AddUser() {

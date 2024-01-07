@@ -8,7 +8,7 @@ import { Group } from "@mantine/core";
 import UsernameInput from "@/app/_components/Form/Inputs/UsernameInput";
 import EmailInput from "@/app/_components/Form/Inputs/EmailInput";
 import paramsIdType from "@/libs/types/paramsIdType";
-import { EditUserForm } from "@/app/_libs/users/Forms";
+import { EditUserForm } from "@/app/_components/Form/Forms/UserForms";
 
 
 

@@ -6,13 +6,14 @@ import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import DurationTimeInput from "@/app/_components/Form/Inputs/DurationTimeInput";
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllUsers } from "@/app/_libs/users/fetch";
-import { AddProductForm } from "@/app/_libs/products/Forms";
+import { AddProductForm } from "@/app/_components/Form/Forms/ProductForms";
 
 async function AddProduct() {
   const { data: users } = await getAllUsers()
   return (
     <Modal title="اضافه کردن محصول">
       <AddProductForm >
+
         <NameInput />
         <UserComboBox data={users} />
         <DurationTimeInput />

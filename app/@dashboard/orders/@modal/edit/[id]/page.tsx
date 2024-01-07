@@ -9,7 +9,7 @@ import { ProductComboBox } from "@/app/_components/Form/ComoboBox/ProductComboBo
 import { UserComboBox } from "@/app/_components/Form/ComoboBox/UserComboBox";
 import { getAllProducts } from "@/app/_libs/products/fetch";
 import { getOrderById } from "@/app/_libs/orders/fetch";
-import { EditOrderForm } from "@/app/_components/Form/Form/Forms";
+import { EditOrderForm } from "@/app/_components/Form/Forms/OrderForms";
 
 
 type EditOrderProps = paramsIdType

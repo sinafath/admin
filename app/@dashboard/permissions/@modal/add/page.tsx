@@ -8,7 +8,7 @@ import { RouteComboBox } from "@/app/_components/Form/ComoboBox/RouteComboBox";
 import getAllRoutes from "@/app/_libs/routes/fetch";
 import ReadInput from "@/app/_components/Form/Inputs/ReadInput";
 import { getAllRoles } from "@/app/_libs/roles/fetch";
-import { AddPermissionForm } from "@/app/_libs/permissions/Forms";
+import { AddPermissionForm } from "@/app/_components/Form/Forms/PermissionForms";
 
 
 async function addPermission() {

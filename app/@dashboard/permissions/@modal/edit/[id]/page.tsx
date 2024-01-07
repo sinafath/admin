@@ -10,8 +10,8 @@ import { RoleSelectComboBox } from "@/app/_components/Form/ComoboBox/RoleSelectC
 import getAllRoutes from "@/app/_libs/routes/fetch";
 import { RouteComboBox } from "@/app/_components/Form/ComoboBox/RouteComboBox";
 import ReadInput from "@/app/_components/Form/Inputs/ReadInput";
-import { EditPermissionForm } from "@/app/_libs/permissions/Forms";
 import { getAllRoles } from "@/app/_libs/roles/fetch";
+import { EditPermissionForm } from "@/app/_components/Form/Forms/PermissionForms";
 
 
 type EditPermissionsProps = paramsIdType

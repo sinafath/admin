@@ -8,8 +8,8 @@ import { Group } from "@mantine/core";
 import NameInput from "@/app/_components/Form/Inputs/NameInput";
 import paramsIdType from "@/libs/types/paramsIdType";
 import { EditRoleSchema } from "@/app/_libs/roles/schema";
-import { EditRoleForm } from "@/app/_libs/roles/Forms";
 import { getRoleById } from "@/app/_libs/roles/fetch";
+import { EditRoleForm } from "@/app/_components/Form/Forms/RoleForms";
 
 
 type editRoleProps = paramsIdType
