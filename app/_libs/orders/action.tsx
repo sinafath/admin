@@ -20,7 +20,7 @@ function addOrderAction(props: addOrderActionProps, init?: init) {
         routeOder,
         {
             body: props,
-            notification: "سفارش با موفقیت ویرایش شد",
+            notification: "سفارش با موفقیت اضافه شد",
             ...init
         },
 

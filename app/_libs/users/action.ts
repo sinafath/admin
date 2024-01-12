@@ -29,7 +29,7 @@ function addUserAction(porps: addUserActionProps, init?: init) {
         routeUser,
         {
             body: porps,
-            notification: "کاربر با موفقیت ویرایش شد",
+            notification: "کاربر با موفقیت ثبت شد",
             ...init
         },
 

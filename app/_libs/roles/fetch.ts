@@ -1,6 +1,6 @@
 import appendParams from "@/libs/http/searchParams/appendParams";
-import authenticatedFetch, { authenticatedDelete, authenticatedPatch, authenticatedPost, init } from "@/libs/http/fetch/fetch";
-import { editRoleByIdProps, getAllRolesResult, getRoleByIdResult, getRolesPageResult } from "./types";
+import authenticatedFetch, { init } from "@/libs/http/fetch/fetch";
+import {  getAllRolesResult, getRoleByIdResult, getRolesPageResult } from "./types";
 import idType from "@/libs/types/idType";
 
 const route = "/api/v1/role"
@@ -22,42 +22,6 @@ function getRoleById({ id }: idType, init?: init) {
         init
     )
 }
-function deleteRoleById({ id }: idType, init?: init) {
-    return authenticatedDelete(
-        `${route}/${id} `,
-        {
-            notification: "نقش با موفقیت حذف شد",
-            ...init
-        },
-    )
-}
-function editRoleById({ id, name, defaultValue = false }: editRoleByIdProps, init?: init) {
-    return authenticatedPatch(
-        `${route}/${id} `,
-        {
-            body: {
-                name: name,
-                default: defaultValue
-            },
-            notification: "کاربر با موفقیت ویرایش شد",
-            ...init
-        },
 
-    )
-}
-function addRole({ id, name, defaultValue = false }: editRoleByIdProps, init?: init) {
-    return authenticatedPost(
-        route,
-        {
-            body: {
-                name: name,
-                default: defaultValue
-            },
-            notification: "کاربر با موفقیت ویرایش شد",
-            ...init
-        },
 
-    )
-}
-
-export { getRolesPerPage, deleteRoleById, getRoleById, editRoleById, addRole ,getAllRoles}
+export { getRolesPerPage, getRoleById,getAllRoles}

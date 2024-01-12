@@ -1,6 +1,6 @@
 import appendParams from "@/libs/http/searchParams/appendParams";
-import authenticatedFetch, { authenticatedDelete, authenticatedPatch, authenticatedPost, init } from "@/libs/http/fetch/fetch";
-import { GetAllProductsResult,  GetProductByIdResult, GetProductsPageResult, addProductProps, editProductByIdProps } from "./types";
+import authenticatedFetch, {  init } from "@/libs/http/fetch/fetch";
+import { GetAllProductsResult,  GetProductByIdResult, GetProductsPageResult} from "./types";
 import idType from "@/libs/types/idType";
 
 const route = "/api/v1/product"
