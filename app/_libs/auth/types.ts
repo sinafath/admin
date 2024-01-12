@@ -8,5 +8,8 @@ type loginResultType = responseSuccessType<{
     }[]
 }>
 
-
-export type { loginResultType }
+type loginPropsType = {
+    email: string;
+    password: string;
+}
+export type { loginResultType,loginPropsType }

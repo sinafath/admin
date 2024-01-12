@@ -4,12 +4,12 @@ import {
     Title,
 } from '@mantine/core';
 import classes from './Login.module.css';
-import { login } from '../_libs/auth/actions';
 import Button from '../_components/Form/Submit';
 import PasswordInput from '../_components/Form/Inputs/PasswordInput';
 import { Form } from '../_components/Form/Form';
 import EmailInput from '../_components/Form/Inputs/EmailInput';
 import { LoginSchema } from '../_libs/auth/schema';
+import { login } from '../_libs/auth/actions';
 
 
 

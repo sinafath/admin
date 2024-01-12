@@ -11,7 +11,7 @@ import useAction from '@/libs/hooks/useAction';
 
 type FormProps<Schema extends z.ZodTypeAny> = PropsWithChildren<{
     initialValues?: Partial<z.infer<Schema>>
-    action: (data: z.infer<Schema>, init?: init) => Promise<{}>;
+    action: (data: z.infer<Schema>, init?: init) => Promise<any>;
     schema?: Schema
     routeBack?: boolean
 }> & BoxProps

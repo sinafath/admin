@@ -4,7 +4,7 @@ import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import { Group } from "@mantine/core";
-import { DeleteroductAction } from "@/app/_libs/products/actions";
+import { deleteProductAction } from "@/app/_libs/products/action";
 import paramsIdType from "@/libs/types/paramsIdType";
 
 
@@ -16,7 +16,7 @@ async function DeleteProduct({
   const { id } = params || {}
   return (
     <Modal title="حذف کاربر">
-      <Form routeBack action={DeleteroductAction} initialValues={{ id: Number(id) }}>
+      <Form routeBack action={deleteProductAction} initialValues={{ id: Number(id) }}>
         <HiddenIdInput />
         <Group grow justify="center">
           <Delete />
