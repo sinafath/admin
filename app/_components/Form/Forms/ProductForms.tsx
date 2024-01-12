@@ -1,16 +1,20 @@
 "use client"
 
 import { Form } from "@/app/_components/Form/Form"
-import { AddProductAction, EditProductAction } from "@/app/_libs/products/actions"
+import { addProductAction, editProductAction } from "@/app/_libs/products/action"
 import { AddProductSchema, EditProductSchema } from "@/app/_libs/products/schema"
+import { AddProductSchemaType, EditProductSchemaType } from "@/app/_libs/products/types"
 import { FormType } from "@/libs/types/FormType"
 
-function AddProductForm(props: FormType<typeof AddProductSchema>) {
-    return <Form routeBack schema={AddProductSchema} action={AddProductAction} {...props} />
+type EditProductFormProps = FormType<EditProductSchemaType>
+type AddProductFormProps = FormType<AddProductSchemaType>
+
+function AddProductForm(props: AddProductFormProps) {
+    return <Form routeBack schema={AddProductSchema} action={addProductAction} {...props} />
 }
 
-function EditProductForm(props: FormType<typeof EditProductSchema>) {
-    return <Form routeBack schema={EditProductSchema} action={EditProductAction} {...props} />
+function EditProductForm(props: EditProductFormProps) {
+    return <Form routeBack schema={EditProductSchema} action={editProductAction} {...props} />
 }
 
 export { AddProductForm, EditProductForm }

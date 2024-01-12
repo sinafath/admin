@@ -2,7 +2,7 @@ import Delete from "@/app/_components/Buttons/Cancel";
 import { Form } from "@/app/_components/Form/Form";
 import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
-import { DeleteRoleAction } from "@/app/_libs/roles/actions";
+import { deleteRoleAction } from "@/app/_libs/roles/action";
 import {  Group } from "@mantine/core";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
 import paramsIdType from "@/libs/types/paramsIdType";
@@ -15,7 +15,7 @@ async function DeleteRole({
 }:  DeleteRoleProps) {
   return (
     <Modal title="حذف نقش">
-      <Form routeBack action={DeleteRoleAction} initialValues={{ id: Number(id) }}>
+      <Form routeBack action={deleteRoleAction} initialValues={{ id: Number(id) }}>
         <HiddenIdInput />
         <Group grow justify="center">
           <Delete />

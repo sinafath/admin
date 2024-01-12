@@ -4,7 +4,7 @@ import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import {  Group } from "@mantine/core";
 import HiddenIdInput from "@/app/_components/Form/Inputs/HiddenIdInput";
-import { DeletePermissionAction } from "@/app/_libs/permissions/actions";
+import { deletePermissionAction } from "@/app/_libs/permissions/action";
 import paramsIdType from "@/libs/types/paramsIdType";
 
 type DeletePermissionProps = paramsIdType
@@ -14,7 +14,7 @@ async function DeletePermission({
 }: DeletePermissionProps) {
   return (
     <Modal title="حذف دسترسی">
-      <Form routeBack action={DeletePermissionAction}   initialValues={{ id: Number(id) }}>
+      <Form routeBack action={deletePermissionAction}   initialValues={{ id: Number(id) }}>
         <HiddenIdInput />
         <Group grow justify="center">
           <Delete />

@@ -3,15 +3,15 @@
 import { Box, BoxProps, Text } from '@mantine/core';
 import { createFormContext, zodResolver } from '@mantine/form';
 import { PropsWithChildren, useEffect } from 'react';
-import { useAction } from "next-safe-action/hook";
-import { SafeAction } from 'next-safe-action/.';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 import { ActionProvider } from './ActionContext';
+import { init } from '@/libs/http/fetch/fetch';
+import useAction from '@/libs/hooks/useAction';
 
-type FormProps<Schema extends z.ZodTypeAny, data> = PropsWithChildren<{
-    initialValues?: Partial<z.TypeOf<Schema>>
-    action: SafeAction<Schema, data>
+type FormProps<Schema extends z.ZodTypeAny> = PropsWithChildren<{
+    initialValues?: Partial<z.infer<Schema>>
+    action: (data: z.infer<Schema>, init?: init) => Promise<{}>;
     schema?: Schema
     routeBack?: boolean
 }> & BoxProps
@@ -19,19 +19,18 @@ type FormProps<Schema extends z.ZodTypeAny, data> = PropsWithChildren<{
 
 const [FormProvider, useFormContext, useForm] =
     createFormContext<{}>();
-function Form<Schema extends z.ZodTypeAny, data>({ initialValues,schema, children, action, routeBack, ...props }: FormProps<Schema, data>) {
-    const withInitialValue = initialValues ? {
-        initialValues
-    } : {}
-    const { execute, result, status } = useAction(action)
-    const form = useForm({ validate: schema ? zodResolver(schema) : undefined, ...withInitialValue, })
+    
+function Form<Schema extends z.ZodTypeAny>({ initialValues
+    , schema, children,
+    action, routeBack, ...props }: FormProps<Schema>) {
+    const { status, execute, serverError } = useAction(action)
+    const form = useForm({ validate: schema && zodResolver(schema), initialValues })
     const route = useRouter()
-
     useEffect(() => {
         if (status === "hasSucceeded" && routeBack) {
             route.back()
         }
-    }, [result && status])
+    }, [status])
     return (
         <ActionProvider value={status}>
             <FormProvider form={form}>
@@ -39,7 +38,7 @@ function Form<Schema extends z.ZodTypeAny, data>({ initialValues,schema, childre
                     {children}
                 </Box>
                 <Text c="red" pt={10}>
-                    {result.serverError}
+                    {serverError}
                 </Text >
             </FormProvider>
         </ActionProvider>

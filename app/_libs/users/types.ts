@@ -1,6 +1,8 @@
+import idType from "@/libs/types/idType"
 import responseSuccessType, { responseSuccessPagination } from "@/libs/types/responseType"
+import { AddUserSchema, EditUserSchema } from "./schema"
 
-type addUserByIdProps = { password: string, email: string, username:string }
+type addUserActionProps = { password: string, email: string, username: string }
 type userType = {
   id: number,
   email: string,
@@ -12,4 +14,14 @@ type deleteActionProps = { id: number }
 type getUserByIdResult = responseSuccessType<userType>
 type getAllUsersResult = responseSuccessType<userType[]>
 type getUsersResult = responseSuccessPagination<userType[]>
-export type { addUserByIdProps, getUserByIdResult,getAllUsersResult, getUsersResult, userType, deleteActionProps }
+type EditUserActionProps = addUserActionProps & idType
+
+
+type AddUserSchemaType = typeof AddUserSchema
+type EditUserSchemaType = typeof EditUserSchema
+
+export type { addUserActionProps, AddUserSchemaType,
+   EditUserSchemaType, EditUserActionProps, getUserByIdResult, 
+   getAllUsersResult, getUsersResult, 
+   userType, 
+  deleteActionProps }

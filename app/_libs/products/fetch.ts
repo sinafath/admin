@@ -21,36 +21,5 @@ function getProductById({ id }: idType, init?: init) {
         init
     )
 }
-function deleteProductById({ id }: idType, init?: init) {
-    return authenticatedDelete(
-        `${route}/${id} `,
-        {
-            notification: "محصول با موفقیت حذف شد",
-            ...init
-        },
-    )
-}
-function editProductById({ durationTime = 10000, name, userId, id }: editProductByIdProps, init?: init) {
-    return authenticatedPatch(
-        `${route}/${id} `,
-        {
-            body: { durationTime, name, userId },
-            notification: "محصول با موفقیت ویرایش شد",
-            ...init
-        },
 
-    )
-}
-function addProduct({ durationTime = 10000, name, userId }: addProductProps, init?: init) {
-    return authenticatedPost(
-        route,
-        {
-            body: { durationTime, name, userId },
-            notification: "محصول با موفقیت ثبت شد",
-            ...init
-        },
-
-    )
-}
-
-export { getProductsPerPage, deleteProductById, getProductById, editProductById, addProduct,getAllProducts }
+export { getProductsPerPage, getProductById, getAllProducts }

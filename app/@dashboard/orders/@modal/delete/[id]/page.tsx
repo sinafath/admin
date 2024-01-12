@@ -5,7 +5,7 @@ import Submit from "@/app/_components/Form/Submit";
 import Modal from "@/app/_components/Modal/Modal";
 import {Group } from "@mantine/core";
 import paramsIdType from "@/libs/types/paramsIdType";
-import { deleteOrderAction } from "@/app/_libs/orders/actions";
+import { deleteOrderAction } from "@/app/_libs/orders/action";
 
 
 type DeleteUserProps = paramsIdType

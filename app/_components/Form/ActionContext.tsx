@@ -1,12 +1,11 @@
-import { HookActionStatus } from 'next-safe-action/hook';
 import React, { createContext, useContext } from 'react';
 
-
+type ActionState = "idle" | "executing" | "hasSucceeded" | "hasErrored";
 // Create a context for your state and dispatch
-const ActionContext = createContext<HookActionStatus>("idle");
+const ActionContext = createContext<ActionState>("idle");
 
 
-type ActionProviderType ={children: React.ReactNode,value:HookActionStatus}
+type ActionProviderType ={children: React.ReactNode,value:ActionState}
 // Create a provider component to wrap your app and provide the context value
 export function ActionProvider({ children,value }: ActionProviderType) {
 
@@ -21,3 +20,4 @@ export function useActionContext() {
   }
   return context;
 }
+export type {ActionState}

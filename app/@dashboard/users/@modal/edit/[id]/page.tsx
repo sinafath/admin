@@ -28,7 +28,6 @@ async function EditUser({
           <Delete />
           <Submit mt={0} />
         </Group>
-
       </EditUserForm>
     </Modal>
 

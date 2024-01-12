@@ -2,15 +2,19 @@
 
 
 import { Form } from "@/app/_components/Form/Form"
-import { addUserAction,editUserAction } from "@/app/_libs/users/actions"
+import { addUserAction, editUserAction } from "@/app/_libs/users/action"
 import { AddUserSchema ,EditUserSchema} from "@/app/_libs/users/schema"
+import { AddUserSchemaType, EditUserSchemaType } from "@/app/_libs/users/types"
 import { FormType } from "@/libs/types/FormType"
 
-function AddUserForm(props: FormType<typeof AddUserSchema>) {
+type AddUserFormProps = FormType<AddUserSchemaType>
+type EditUserFormProps = FormType<EditUserSchemaType>
+
+function AddUserForm(props: AddUserFormProps) {
     return <Form routeBack schema={AddUserSchema} action={addUserAction} {...props} />
 }
 
-function EditUserForm(props: FormType<typeof EditUserSchema>) {
+function EditUserForm(props: EditUserFormProps) {
     return <Form routeBack schema={EditUserSchema} action={editUserAction} {...props} />
 }
 

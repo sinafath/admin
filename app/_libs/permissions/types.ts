@@ -1,12 +1,13 @@
 import responseSuccessType, { responseSuccessPagination } from "@/libs/types/responseType"
+import { AddPermissionSchema, EditPermissionSchema } from "./schema"
 
-type addPermissionProps = {
+type addPermissionActionProps = {
   name: string,
   roleId: number,
   routeIds: number[],
   read: string
 }
-type permissionType =   {
+type permissionType = {
   id: 2,
   name: string,
   deleted: null,
@@ -15,5 +16,8 @@ type permissionType =   {
 type getPermissionByIdResult = responseSuccessType<permissionType>
 type getAllPermissionResult = responseSuccessType<permissionType[]>
 type getPermissionsPageResult = responseSuccessPagination<permissionType[]>
+type AddPermissionSchemaType = typeof AddPermissionSchema
+type EditPermissionSchemaType = typeof EditPermissionSchema
 
-export type { addPermissionProps, getPermissionByIdResult, getPermissionsPageResult,getAllPermissionResult, permissionType }
+export type { addPermissionActionProps, EditPermissionSchemaType, AddPermissionSchemaType, 
+  getPermissionByIdResult, getPermissionsPageResult, getAllPermissionResult, permissionType }
